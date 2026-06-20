@@ -19,6 +19,11 @@
   nav{position:fixed;top:0;left:0;right:0;z-index:90;display:flex;justify-content:space-between;align-items:center;padding:14px 24px;background:rgba(26,18,48,.85);backdrop-filter:blur(10px)}
   nav .logo{font-family:'Archivo Black',sans-serif;color:#fff;font-size:18px;letter-spacing:-.02em}
   nav .logo span{color:var(--oro)}
+  .flag-svg{border-radius:3px;box-shadow:0 1px 4px rgba(0,0,0,.4);vertical-align:middle;flex-shrink:0}
+  nav .logo{display:flex;align-items:center;gap:9px}
+  nav .logo .flag-svg{width:28px;height:19px}
+  .hero h1{display:flex;align-items:center;justify-content:center;gap:clamp(14px,3vw,28px);flex-wrap:wrap}
+  .hero h1 .flag-svg{width:clamp(48px,9vw,84px);height:auto;aspect-ratio:3/2}
   nav .right{display:flex;gap:10px;align-items:center}
   .lang{display:flex;border:2px solid rgba(255,255,255,.35);border-radius:100px;overflow:hidden;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:13px}
   .lang button{background:none;border:none;color:rgba(255,255,255,.7);padding:6px 14px;cursor:pointer;transition:background .2s,color .2s}
@@ -35,6 +40,15 @@
   .hero .stat-strip div{font-family:'Bricolage Grotesque',sans-serif}
   .hero .stat-strip b{font-family:'Archivo Black',sans-serif;font-size:clamp(1.8rem,5vw,2.8rem);color:var(--oro);display:block;line-height:1}
   .hero .stat-strip small{font-size:13px;opacity:.85;font-weight:600}
+
+  /* ===== INTRO ¿QUÉ ES SER BACÁN? ===== */
+  .intro{max-width:760px;margin:0 auto;padding:76px 24px 30px;text-align:center}
+  .intro .kicker{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.2em;font-size:12px;color:var(--magenta);margin-bottom:14px}
+  .intro h2{font-family:'Archivo Black',sans-serif;font-size:clamp(2rem,6vw,3.4rem);line-height:1;margin-bottom:24px}
+  .intro h2 .hl{color:var(--magenta)}
+  .intro p{font-family:'Bricolage Grotesque',sans-serif;font-weight:500;font-size:clamp(1.05rem,2.3vw,1.3rem);line-height:1.55;margin-bottom:18px;color:#3a2f55}
+  .intro p:last-child{margin-bottom:0}
+  .intro p b{font-weight:800;color:var(--tinta)}
 
   /* ===== SECCIÓN MAPA ===== */
   .mapa-sec{max-width:1180px;margin:0 auto;padding:70px 24px 30px;display:grid;grid-template-columns:minmax(260px,360px) 1fr;gap:40px;align-items:start}
@@ -100,7 +114,7 @@
 <body>
 
 <nav>
-  <div class="logo">SOMOS<span>BACANES</span></div>
+  <div class="logo">SOMOS<span>BACANES</span><svg class="flag-svg" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" aria-label="Chile"><rect width="30" height="20" fill="#fff"/><rect width="30" height="10" y="10" fill="#D52B1E"/><rect width="10" height="10" fill="#0039A6"/><polygon points="5,2.2 5.9,4.8 8.6,4.8 6.4,6.4 7.2,9 5,7.4 2.8,9 3.6,6.4 1.4,4.8 4.1,4.8" fill="#fff"/></svg></div>
   <div class="right">
     <div class="lang"><button data-lang="es" class="active">ES</button><button data-lang="en">EN</button></div>
     <a href="#sumate" class="nav-cta" data-es="Súmate" data-en="Join">Súmate</a>
@@ -110,14 +124,25 @@
 <section class="hero">
   <div class="wrap">
     <div class="eyebrow" data-es="Datos reales · fuentes reales · orgullo real" data-en="Real data · real sources · real pride">Datos reales · fuentes reales · orgullo real</div>
-    <h1 class="display">Somos Bacanes</h1>
-    <p class="sub" data-es="Explora Chile región por región y descubre todo lo que nos hace una genialidad. Con cifras de verdad, listas para mandar." data-en="Explore Chile region by region and discover what makes it genius. With real numbers, ready to share.">Explora Chile región por región y descubre todo lo que nos hace una genialidad. Con cifras de verdad, listas para mandar.</p>
+    <h1 class="display">Somos Bacanes<svg class="flag-svg" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" aria-label="Chile"><rect width="30" height="20" fill="#fff"/><rect width="30" height="10" y="10" fill="#D52B1E"/><rect width="10" height="10" fill="#0039A6"/><polygon points="5,2.2 5.9,4.8 8.6,4.8 6.4,6.4 7.2,9 5,7.4 2.8,9 3.6,6.4 1.4,4.8 4.1,4.8" fill="#fff"/></svg></h1>
+    <p class="sub" data-es="De Arica a la Antártica, todo lo que nos hace bacanes. Con datos, con orgullo, con chispeza." data-en="From Arica to Antarctica, everything that makes us bacanes. With data, with pride, with ingenuity.">De Arica a la Antártica, todo lo que nos hace bacanes. Con datos, con orgullo, con chispeza.</p>
     <div class="stat-strip">
       <div><b>#1</b><small data-es="del mundo en cobre" data-en="in the world for copper">del mundo en cobre</small></div>
       <div><b>40%</b><small data-es="del litio del planeta" data-en="of the planet's lithium">del litio del planeta</small></div>
       <div><b>#1</b><small data-es="cielo más limpio para ver estrellas" data-en="clearest skies for stargazing">cielo más limpio para ver estrellas</small></div>
     </div>
   </div>
+</section>
+
+<section class="intro">
+  <div class="kicker" data-es="El movimiento" data-en="The movement">El movimiento</div>
+  <h2 data-es="¿Qué es ser bacán?" data-en="What does it mean to be bacán?">¿Qué es ser <span class="hl">bacán</span>?</h2>
+  <p data-es='"Bacán" es una de esas palabras que solo los chilenos entendemos del todo. Significa genial, increíble, de lo mejor — pero es más que eso.'
+     data-en='"Bacán" is one of those words only Chileans fully understand. It means awesome, amazing, the best — but it is more than that.'>"Bacán" es una de esas palabras que solo los chilenos entendemos del todo. Significa genial, increíble, de lo mejor — pero es más que eso.</p>
+  <p data-es="Ser bacán es resolver con ingenio, levantarse después de cada caída, mirar las estrellas más limpias del mundo y construir los telescopios para compartirlas. Es la chispeza, la garra y el cariño hechos identidad."
+     data-en="Being bacán is solving things with ingenuity, getting back up after every fall, gazing at the clearest stars on Earth and building the telescopes to share them. It is wit, grit and warmth turned into identity.">Ser bacán es resolver con ingenio, levantarse después de cada caída, mirar las estrellas más limpias del mundo y construir los telescopios para compartirlas. Es la chispeza, la garra y el cariño hechos identidad.</p>
+  <p data-es="Este es un mapa de todo eso. De Arica a la Antártica, cada región guarda razones para sentirnos orgullosos. <b>No es presumir: es reconocer, por fin y en voz alta, lo bacanes que somos.</b>"
+     data-en="This is a map of all that. From Arica to Antarctica, every region holds reasons to feel proud. <b>It is not bragging: it is finally saying out loud how bacanes we are.</b>">Este es un mapa de todo eso. De Arica a la Antártica, cada región guarda razones para sentirnos orgullosos. <b>No es presumir: es reconocer, por fin y en voz alta, lo bacanes que somos.</b></p>
 </section>
 
 <section class="mapa-sec">
@@ -225,7 +250,7 @@ function shareCard(d){
 
 function setLang(l){
   LANG=l;document.documentElement.lang=l==='es'?'es-CL':'en';
-  document.querySelectorAll('[data-es]').forEach(el=>{const v=el.getAttribute('data-'+l);if(v!==null)el.textContent=v;});
+  document.querySelectorAll('[data-es]').forEach(el=>{const v=el.getAttribute('data-'+l);if(v!==null){if(v.indexOf('<')!==-1)el.innerHTML=v;else el.textContent=v;}});
   document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
   if(activeReg)selectRegion(activeReg,regName(activeReg));else resetRegion();
 }
