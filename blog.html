@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="es-CL">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Somos Bacanes</title>
+<meta name="description" content="Todo lo bacán de Chile, contado. Un artículo por cada genialidad, con datos y fuentes.">
+<meta property="og:title" content="Blog — Somos Bacanes">
+<meta property="og:description" content="Todo lo bacán de Chile, contado. Con datos, con fuentes, con orgullo.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--crema:#FFF6EC;--tinta:#1A1230;--rosa:#FF3D8B;--oro:#FFC42E;--magenta:#C81D77;--azul:#2B2B8F;--turquesa:#00B3A4;--naranja:#FF6B35}
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--crema);color:var(--tinta);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  ::selection{background:var(--oro);color:var(--tinta)}
+  .display{font-family:'Archivo Black',sans-serif;line-height:.92;letter-spacing:-.02em}
+  a{color:inherit}
+
+  nav{position:fixed;top:0;left:0;right:0;z-index:90;display:flex;justify-content:space-between;align-items:center;padding:14px 24px;background:rgba(26,18,48,.92);backdrop-filter:blur(10px)}
+  nav .logo{font-family:'Archivo Black',sans-serif;color:#fff;font-size:18px;letter-spacing:-.02em;display:flex;align-items:center;gap:9px;text-decoration:none}
+  nav .logo span{color:var(--oro)}
+  nav .flag-svg{width:28px;height:19px;border-radius:3px}
+  nav .right{display:flex;gap:10px;align-items:center}
+  nav a.nav-link{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;color:#fff;text-decoration:none;font-size:14px;opacity:.85;padding:8px 6px}
+  nav a.nav-link:hover{opacity:1}
+  nav a.nav-cta{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;color:var(--tinta);background:var(--oro);text-decoration:none;font-size:14px;border-radius:100px;padding:8px 18px;transition:transform .2s}
+  nav a.nav-cta:hover{transform:scale(1.05)}
+
+  .blog-hero{padding:120px 24px 30px;max-width:1180px;margin:0 auto}
+  .blog-hero .eyebrow{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.2em;font-size:12px;color:var(--magenta);margin-bottom:18px}
+  .blog-hero h1{font-size:clamp(2.4rem,7vw,4.6rem);text-transform:uppercase;line-height:.95}
+  .blog-hero h1 .hl{color:var(--magenta)}
+  .blog-hero .sub{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(1.05rem,2.4vw,1.35rem);max-width:560px;margin-top:18px;opacity:.8;line-height:1.4}
+
+  .cat-filters{display:flex;gap:8px;flex-wrap:wrap;max-width:1180px;margin:28px auto 0;padding:0 24px}
+  .cat-btn{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:13px;border:2px solid var(--tinta);background:none;color:var(--tinta);border-radius:100px;padding:7px 16px;cursor:pointer;transition:all .18s}
+  .cat-btn:hover{transform:translateY(-2px)}
+  .cat-btn.active{background:var(--tinta);color:#fff}
+
+  /* destacado */
+  .featured-wrap{max-width:1180px;margin:34px auto 0;padding:0 24px}
+  .featured{display:grid;grid-template-columns:1fr 1fr;border-radius:24px;overflow:hidden;box-shadow:0 16px 44px rgba(26,18,48,.16);background:#fff;cursor:pointer;transition:transform .25s}
+  .featured:hover{transform:translateY(-4px)}
+  .featured .media{position:relative;min-height:340px;background-size:cover;background-position:center}
+  .featured .media .tag{position:absolute;left:18px;bottom:16px;background:rgba(0,0,0,.45);color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:12px;padding:5px 13px;border-radius:100px}
+  .featured .media .ico{position:absolute;right:16px;top:16px;width:34px;height:34px;border-radius:9px;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:16px}
+  .featured .body{padding:38px 36px;display:flex;flex-direction:column;justify-content:center}
+  .featured .klabel{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--magenta);margin-bottom:14px}
+  .featured h2{font-size:clamp(1.6rem,3.4vw,2.5rem);line-height:1.05;margin-bottom:14px}
+  .featured p{font-family:'Bricolage Grotesque',sans-serif;font-weight:500;font-size:1.05rem;line-height:1.5;opacity:.8;margin-bottom:24px}
+  .featured .actions{display:flex;gap:10px;flex-wrap:wrap}
+  .btn-dark{background:var(--tinta);color:#fff;border:none;border-radius:100px;padding:13px 24px;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:14px;cursor:pointer;text-decoration:none;display:inline-block;transition:transform .2s,background .2s}
+  .btn-dark:hover{transform:scale(1.04);background:var(--magenta)}
+  .btn-ghost{background:none;border:2px solid var(--tinta);border-radius:100px;padding:11px 22px;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:14px;cursor:pointer;transition:all .2s}
+  .btn-ghost:hover{background:var(--tinta);color:#fff}
+
+  /* grilla */
+  .section-title{max-width:1180px;margin:60px auto 22px;padding:0 24px;display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:8px}
+  .section-title h3{font-size:clamp(1.5rem,3.5vw,2.2rem)}
+  .section-title .meta{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;opacity:.6}
+  .grid{max-width:1180px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
+  .post{background:#fff;border-radius:20px;overflow:hidden;cursor:pointer;box-shadow:0 8px 26px rgba(26,18,48,.1);transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column}
+  .post:hover{transform:translateY(-5px);box-shadow:0 16px 38px rgba(26,18,48,.18)}
+  .post .media{position:relative;height:150px;background-size:cover;background-position:center}
+  .post .media .tag{position:absolute;left:14px;bottom:12px;background:rgba(0,0,0,.45);color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:11px;padding:4px 11px;border-radius:100px}
+  .post .media .ico{position:absolute;right:12px;top:12px;width:30px;height:30px;border-radius:8px;background:rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:14px}
+  .post .body{padding:20px;display:flex;flex-direction:column;flex:1}
+  .post .klabel{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:9px}
+  .post h4{font-size:1.15rem;line-height:1.2;margin-bottom:10px}
+  .post p{font-family:'Inter',sans-serif;font-size:.9rem;line-height:1.45;opacity:.75;margin-bottom:16px;flex:1}
+  .post .foot{display:flex;justify-content:space-between;align-items:center;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:12px}
+  .post .foot .read{color:var(--magenta)}
+  .post .foot .min{opacity:.55}
+  .k-recursos{color:var(--naranja)} .k-cielo{color:var(--azul)} .k-natura{color:var(--turquesa)} .k-gente{color:var(--magenta)}
+
+  .more-wrap{text-align:center;margin:44px 0 10px}
+  .more-btn{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:15px;cursor:pointer;background:none;border:2px solid var(--tinta);color:var(--tinta);border-radius:100px;padding:13px 30px;transition:all .2s}
+  .more-btn:hover{background:var(--tinta);color:#fff}
+  .more-btn.hidden{display:none}
+
+  /* footer súmate */
+  .sumate{padding:80px 24px;text-align:center;color:#fff;margin-top:70px;background:radial-gradient(100% 80% at 80% 20%,var(--oro) 0%,transparent 50%),radial-gradient(110% 90% at 10% 90%,var(--turquesa) 0%,transparent 45%),linear-gradient(150deg,var(--rosa),var(--magenta))}
+  .sumate h2{font-family:'Archivo Black',sans-serif;font-size:clamp(2rem,6vw,3.6rem);text-transform:uppercase;line-height:.98}
+  .sumate .lead{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(1rem,2.2vw,1.3rem);margin:20px auto 0;max-width:520px;line-height:1.4}
+  .sumate .go{margin-top:30px}
+  footer{background:var(--tinta);color:rgba(255,255,255,.6);text-align:center;padding:34px 24px;font-size:13px}
+  footer b{color:#fff;font-family:'Bricolage Grotesque',sans-serif}
+
+  /* ===== VISTA DE ARTÍCULO ===== */
+  .article-view{display:none;max-width:760px;margin:0 auto;padding:110px 24px 40px}
+  .article-view.show{display:block}
+  .list-view.hide{display:none}
+  .back-link{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;color:var(--magenta);text-decoration:none;display:inline-flex;align-items:center;gap:6px;margin-bottom:24px;cursor:pointer}
+  .article-view .a-kicker{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px}
+  .article-view h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.05;margin-bottom:16px}
+  .article-view .a-meta{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:14px;opacity:.6;margin-bottom:26px}
+  .article-view .a-hero{height:300px;border-radius:18px;background-size:cover;background-position:center;margin-bottom:14px}
+  .article-view .a-credit{font-size:12px;opacity:.55;margin-bottom:34px}
+  .article-view .a-body{font-size:1.12rem;line-height:1.7}
+  .article-view .a-body h2{font-family:'Archivo Black',sans-serif;font-size:1.5rem;margin:34px 0 14px;line-height:1.1}
+  .article-view .a-body p{margin-bottom:20px}
+  .article-view .a-body blockquote{border-left:4px solid var(--magenta);padding:6px 0 6px 20px;margin:26px 0;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:1.25rem;font-style:italic;color:var(--magenta)}
+  .article-view .a-body ul{margin:0 0 20px 22px}
+  .article-view .a-body li{margin-bottom:8px}
+  .article-view .a-share{margin-top:40px;padding-top:28px;border-top:1px solid rgba(26,18,48,.12);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .article-view .a-share span{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;opacity:.7;font-size:14px}
+
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--tinta);color:#fff;padding:14px 24px;border-radius:100px;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;z-index:200;transition:transform .35s;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+  .toast.show{transform:translateX(-50%) translateY(0)}
+
+  @media(max-width:760px){
+    .featured{grid-template-columns:1fr}
+    .featured .media{min-height:220px}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="logo" href="index.html">SOMOS<span>BACANES</span><svg class="flag-svg" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" aria-label="Chile"><rect width="30" height="20" fill="#fff"/><rect width="30" height="10" y="10" fill="#D52B1E"/><rect width="10" height="10" fill="#0039A6"/><polygon points="5,2.2 5.9,4.8 8.6,4.8 6.4,6.4 7.2,9 5,7.4 2.8,9 3.6,6.4 1.4,4.8 4.1,4.8" fill="#fff"/></svg></a>
+  <div class="right">
+    <a href="index.html" class="nav-link">El Mapa</a>
+    <a href="index.html#sumate" class="nav-cta">Súmate</a>
+  </div>
+</nav>
+
+<!-- ===== VISTA LISTA ===== -->
+<div class="list-view" id="listView">
+  <header class="blog-hero">
+    <div class="eyebrow">El Faro Bacán · Genialidad por genialidad</div>
+    <h1 class="display">Todo lo bacán<br>de Chile, <span class="hl">contado.</span></h1>
+    <p class="sub">Un artículo por cada genialidad. Con datos, con fuentes y con orgullo — listos para leer y compartir.</p>
+  </header>
+
+  <div class="cat-filters" id="catFilters">
+    <button class="cat-btn active" data-cat="all">Todas</button>
+    <button class="cat-btn" data-cat="natura">Naturaleza</button>
+    <button class="cat-btn" data-cat="gente">Gente y Cultura</button>
+    <button class="cat-btn" data-cat="cielo">Cielo y Ciencia</button>
+    <button class="cat-btn" data-cat="recursos">Recursos</button>
+  </div>
+
+  <div class="featured-wrap" id="featuredWrap"></div>
+
+  <div class="section-title">
+    <h3 class="display">Últimas genialidades</h3>
+    <div class="meta" id="postCount"></div>
+  </div>
+  <div class="grid" id="grid"></div>
+  <div class="more-wrap"><button id="moreBtn" class="more-btn">Cargar más genialidades</button></div>
+</div>
+
+<!-- ===== VISTA ARTÍCULO ===== -->
+<article class="article-view" id="articleView"></article>
+
+<!-- súmate -->
+<section class="sumate">
+  <h2 class="display">Sé parte del movimiento</h2>
+  <p class="lead">Te avisamos cada vez que sumemos nuevas genialidades. Cero spam, puro orgullo.</p>
+  <div class="go"><a href="index.html#sumate" class="btn-dark" style="background:var(--tinta)">Quiero ser bacán</a></div>
+</section>
+<footer><b>Somos Bacanes</b> · Un movimiento hecho en Chile, con chispeza · #SomosBacanes</footer>
+<div class="toast" id="toast"></div>
+
+<script src="articulos.js"></script>
+<script>
+const GRADS={recursos:'linear-gradient(150deg,#FF6B35,#C81D77)',cielo:'linear-gradient(150deg,#2B2B8F,#5b2a8c)',natura:'linear-gradient(150deg,#00B3A4,#0a7d9c)',gente:'linear-gradient(150deg,#FF3D8B,#C81D77)'};
+const CAT_ICON={recursos:'⛏️',cielo:'🔭',natura:'🌿',gente:'🎭'};
+let activeCat='all', shown=6;
+
+function mediaStyle(a){
+  return a.image ? `background-image:url('${a.image}')` : `background:${GRADS[a.cat]}`;
+}
+function filtered(){
+  return ARTICULOS.filter(a=>activeCat==='all'||a.cat===activeCat)
+                  .sort((x,y)=>(y.date||'').localeCompare(x.date||''));
+}
+
+function renderFeatured(){
+  const wrap=document.getElementById('featuredWrap');
+  const list=filtered();
+  const feat=list.find(a=>a.featured)||list[0];
+  if(!feat){wrap.innerHTML='';return;}
+  wrap.innerHTML=`<div class="featured" onclick="openArticle('${feat.slug}')">
+    <div class="media" style="${mediaStyle(feat)}">
+      <div class="ico">${CAT_ICON[feat.cat]||'★'}</div>
+      <div class="tag">${feat.region}</div>
+    </div>
+    <div class="body">
+      <div class="klabel">Destacado · ${feat.catLabel}</div>
+      <h2>${feat.title}</h2>
+      <p>${feat.excerpt}</p>
+      <div class="actions">
+        <a class="btn-dark" onclick="event.stopPropagation();openArticle('${feat.slug}')">Leer el artículo</a>
+        <button class="btn-ghost" onclick="event.stopPropagation();shareArticle('${feat.slug}')">⤴ Compartir</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+function postHTML(a){
+  return `<article class="post" onclick="openArticle('${a.slug}')">
+    <div class="media" style="${mediaStyle(a)}">
+      <div class="ico">${CAT_ICON[a.cat]||'★'}</div>
+      <div class="tag">${a.region}</div>
+    </div>
+    <div class="body">
+      <div class="klabel k-${a.cat}">${a.catLabel}</div>
+      <h4>${a.title}</h4>
+      <p>${a.excerpt}</p>
+      <div class="foot"><span class="read">→ Leer artículo</span><span class="min">${a.readMin||4} min</span></div>
+    </div>
+  </article>`;
+}
+
+function renderGrid(){
+  const grid=document.getElementById('grid');
+  const list=filtered().filter(a=>!a.featured || filtered().length===1);
+  const visible=list.slice(0,shown);
+  grid.innerHTML=visible.map(postHTML).join('') || `<p style="opacity:.6;grid-column:1/-1;text-align:center;padding:40px;font-family:'Bricolage Grotesque',sans-serif;font-weight:600">Aún no hay artículos en esta categoría. ¡Pronto!</p>`;
+  document.getElementById('postCount').textContent = `${list.length} artículo${list.length!==1?'s':''}`;
+  const moreBtn=document.getElementById('moreBtn');
+  moreBtn.classList.toggle('hidden', visible.length>=list.length);
+}
+
+document.getElementById('moreBtn').addEventListener('click',()=>{shown+=6;renderGrid();});
+document.querySelectorAll('#catFilters .cat-btn').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('#catFilters .cat-btn').forEach(x=>x.classList.remove('active'));
+    b.classList.add('active');activeCat=b.dataset.cat;shown=6;
+    renderFeatured();renderGrid();
+  });
+});
+
+// markdown simple → html
+function mdToHtml(md){
+  const lines=md.split('\n');let html='',inList=false;
+  for(let raw of lines){
+    const line=raw.trim();
+    if(line.startsWith('## ')){if(inList){html+='</ul>';inList=false;}html+=`<h2>${esc(line.slice(3))}</h2>`;}
+    else if(line.startsWith('> ')){if(inList){html+='</ul>';inList=false;}html+=`<blockquote>${fmt(line.slice(2))}</blockquote>`;}
+    else if(line.startsWith('- ')){if(!inList){html+='<ul>';inList=true;}html+=`<li>${fmt(line.slice(2))}</li>`;}
+    else if(line===''){if(inList){html+='</ul>';inList=false;}}
+    else{if(inList){html+='</ul>';inList=false;}html+=`<p>${fmt(line)}</p>`;}
+  }
+  if(inList)html+='</ul>';
+  return html;
+}
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function fmt(s){return esc(s).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');}
+
+function openArticle(slug){
+  const a=ARTICULOS.find(x=>x.slug===slug);if(!a)return;
+  const v=document.getElementById('articleView');
+  v.innerHTML=`
+    <a class="back-link" onclick="closeArticle()">← Volver al blog</a>
+    <div class="a-kicker k-${a.cat}">${a.catLabel} · ${a.region}</div>
+    <h1 class="display">${a.title}</h1>
+    <div class="a-meta">${a.readMin||4} min de lectura · ${fmtDate(a.date)}</div>
+    <div class="a-hero" style="${mediaStyle(a)}"></div>
+    ${a.imageCredit?`<div class="a-credit">${a.imageCredit}</div>`:'<div style="height:20px"></div>'}
+    <div class="a-body">${mdToHtml(a.body)}</div>
+    <div class="a-share"><span>¿Te gustó?</span>
+      <button class="btn-dark" onclick="shareArticle('${a.slug}')">⤴ Compartir</button>
+      <a class="btn-ghost" onclick="closeArticle()">Ver más genialidades</a>
+    </div>`;
+  document.getElementById('listView').classList.add('hide');
+  v.classList.add('show');
+  history.replaceState(null,'','blog.html#'+slug);
+  document.title=a.title+' — Somos Bacanes';
+  window.scrollTo(0,0);
+}
+function closeArticle(){
+  document.getElementById('articleView').classList.remove('show');
+  document.getElementById('listView').classList.remove('hide');
+  history.replaceState(null,'','blog.html');
+  document.title='Blog — Somos Bacanes';
+  window.scrollTo(0,0);
+}
+function fmtDate(d){if(!d)return'';const[y,m,day]=d.split('-');const meses=['','enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];return `${+day} de ${meses[+m]} ${y}`;}
+
+function shareArticle(slug){
+  const a=ARTICULOS.find(x=>x.slug===slug);if(!a)return;
+  const url=location.origin+location.pathname+'#'+slug;
+  const text=`${a.title} 🇨🇱 #SomosBacanes`;
+  if(navigator.share){navigator.share({title:a.title,text,url}).catch(()=>{});}
+  else{navigator.clipboard.writeText(text+' — '+url).then(()=>showToast('¡Copiado! Pégalo donde quieras 🎉')).catch(()=>showToast('🇨🇱'));}
+}
+let toastT;function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2600);}
+
+// init: si la URL trae #slug, abrir ese artículo
+renderFeatured();renderGrid();
+const hash=location.hash.replace('#','');
+if(hash && ARTICULOS.find(a=>a.slug===hash)) openArticle(hash);
+</script>
+</body>
+</html>
