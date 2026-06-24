@@ -259,11 +259,10 @@ function buildRegList(){
   const cont=document.getElementById('regList');
   if(!cont)return;
   cont.innerHTML=REGIONES.map(r=>{
-    const n=DATA.filter(d=>d.reg===r.cod).length;
     return `<button class="reg-item" data-cod="${r.cod}">
       <span class="dot" style="background:${REGION_COLORS[r.cod]}"></span>
       <span class="rn">${r.corto}</span>
-      <span class="rc">${n}</span>
+      <span class="rc" data-rc="${r.cod}">0</span>
     </button>`;
   }).join('');
   cont.querySelectorAll('.reg-item').forEach(b=>{
@@ -274,6 +273,14 @@ function buildRegList(){
     });
     b.addEventListener('mouseenter',()=>highlightRegion(cod,true));
     b.addEventListener('mouseleave',()=>highlightRegion(cod,false));
+  });
+  updateRegCounts();
+}
+function updateRegCounts(){
+  REGIONES.forEach(r=>{
+    const n=DATA.filter(d=>d.reg===r.cod && (activeCat==='all'||d.cat===activeCat)).length;
+    const el=document.querySelector(`.rc[data-rc="${r.cod}"]`);
+    if(el){el.textContent=n; el.closest('.reg-item').style.opacity = n===0 ? '.4' : '';}
   });
 }
 function highlightRegion(cod,on){
@@ -288,23 +295,31 @@ function highlightRegion(cod,on){
   }
   drawConnector(cod,on);
 }
+// Anclas manuales en coords del viewBox SVG (360x1500): franja CONTINENTAL de cada región.
+// Evita que islas lejanas (Rapa Nui en Valparaíso) distorsionen el punto de llegada.
+const REG_ANCHOR={
+  15:[235,40], 1:[235,110], 2:[250,230], 3:[225,400], 4:[185,520],
+  5:[185,610], 13:[200,635], 6:[180,665], 7:[165,705], 16:[150,748],
+  8:[120,775], 9:[125,825], 14:[120,865], 10:[95,940], 11:[55,1180], 12:[230,1430]
+};
 function drawConnector(cod,on){
   const layer=document.getElementById('connectorLayer');
   if(!layer)return;
   if(!on){layer.innerHTML='';return;}
   const item=document.querySelector(`.reg-item[data-cod="${cod}"]`);
-  const path=document.querySelector(`svg.chile path[data-cod="${cod}"]`);
+  const svg=document.querySelector('svg.chile');
   const wrap=document.getElementById('mapLayout');
-  if(!item||!path||!wrap)return;
+  if(!item||!svg||!wrap)return;
   const wrapR=wrap.getBoundingClientRect();
   const itemR=item.getBoundingClientRect();
-  const pathR=path.getBoundingClientRect();
+  const svgR=svg.getBoundingClientRect();
   // punto de salida: borde derecho del nombre en la lista
   const x1=itemR.right-wrapR.left;
   const y1=itemR.top+itemR.height/2-wrapR.top;
-  // punto de llegada: centro de la región en el mapa
-  const x2=pathR.left+pathR.width/2-wrapR.left;
-  const y2=pathR.top+pathR.height/2-wrapR.top;
+  // punto de llegada: ancla manual convertida de coords SVG (viewBox 360x1500) a pantalla
+  const anchor=REG_ANCHOR[cod]||[180,750];
+  const x2=svgR.left+(anchor[0]/360)*svgR.width-wrapR.left;
+  const y2=svgR.top+(anchor[1]/1500)*svgR.height-wrapR.top;
   layer.setAttribute('viewBox',`0 0 ${wrapR.width} ${wrapR.height}`);
   layer.innerHTML=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" class="show"/><circle cx="${x2}" cy="${y2}" r="4" class="show"/>`;
 }
@@ -389,6 +404,7 @@ document.querySelectorAll('#catFilters .cat-btn').forEach(b=>{
     b.classList.add('active');
     activeCat=b.dataset.cat;
     deckLimit=6;
+    updateRegCounts();
     renderDeck();
   });
 });
