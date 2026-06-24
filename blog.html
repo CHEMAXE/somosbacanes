@@ -271,14 +271,14 @@ function openArticle(slug){
     </div>`;
   document.getElementById('listView').classList.add('hide');
   v.classList.add('show');
-  history.replaceState(null,'','blog.html#'+slug);
+  history.replaceState(null,'','blog#'+slug);
   document.title=a.title+' — Somos Bacanes';
   window.scrollTo(0,0);
 }
 function closeArticle(){
   document.getElementById('articleView').classList.remove('show');
   document.getElementById('listView').classList.remove('hide');
-  history.replaceState(null,'','blog.html');
+  history.replaceState(null,'','blog');
   document.title='Blog — Somos Bacanes';
   window.scrollTo(0,0);
 }
