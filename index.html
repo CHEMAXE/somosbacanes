@@ -69,7 +69,14 @@
   .reset-btn:hover{transform:scale(1.05);background:var(--magenta)}
 
   /* lista de regiones bajo el mapa */
-  .reg-list{margin-top:20px;display:flex;flex-direction:column;gap:3px}
+  .map-layout{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;margin-top:18px}
+  .map-col{display:flex;justify-content:center}
+  .connector-layer{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:5;overflow:visible}
+  .connector-layer line{stroke:var(--magenta);stroke-width:2;stroke-dasharray:4 3;opacity:0;transition:opacity .2s}
+  .connector-layer line.show{opacity:.9}
+  .connector-layer circle{fill:var(--magenta);opacity:0;transition:opacity .2s}
+  .connector-layer circle.show{opacity:1}
+  .reg-list{display:flex;flex-direction:column;gap:2px}
   .reg-list .reg-item{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 13px;border-radius:10px;cursor:pointer;transition:background .15s;border:none;background:none;width:100%;text-align:left;font-family:'Bricolage Grotesque',sans-serif}
   .reg-list .reg-item:hover{background:rgba(200,29,119,.08)}
   .reg-list .reg-item.active{background:var(--magenta);color:#fff}
@@ -136,6 +143,10 @@
     .mapa-sec{grid-template-columns:1fr;gap:24px}
     .mapa-box{position:static}
     svg.chile{max-height:56vh}
+    .connector-layer{display:none}
+    .map-layout{gap:10px}
+    .reg-list .reg-item{padding:7px 8px}
+    .reg-list .reg-item .rn{font-size:12.5px}
   }
   @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
@@ -177,11 +188,16 @@
 <section class="mapa-sec">
   <div class="mapa-box">
     <h2 class="display" data-es="El Mapa Bacán" data-en="The Bacán Map">El Mapa Bacán</h2>
-    <p data-es="Toca una región para ver sus genialidades." data-en="Tap a region to see its greatness.">Toca una región para ver sus genialidades.</p>
-    <div id="svg-holder"></div>
+    <p data-es="Pasa el mouse o toca una región para ver sus genialidades." data-en="Hover or tap a region to see its greatness.">Pasa el mouse o toca una región para ver sus genialidades.</p>
+    <div class="map-layout" id="mapLayout">
+      <div class="reg-list" id="regList"></div>
+      <div class="map-col">
+        <div id="svg-holder"></div>
+      </div>
+      <svg class="connector-layer" id="connectorLayer" aria-hidden="true"></svg>
+    </div>
     <div class="reg-tip" id="regTip"></div>
     <button class="reset-btn" id="resetBtn" data-es="Ver todo Chile" data-en="See all Chile">Ver todo Chile</button>
-    <div class="reg-list" id="regList"></div>
   </div>
   <div class="deck-area">
     <div class="cat-filters" id="catFilters">
@@ -261,10 +277,36 @@ function buildRegList(){
   });
 }
 function highlightRegion(cod,on){
-  const p=document.querySelector(`svg.chile path[data-cod="${cod}"]`);
-  if(p&&!activeReg){p.style.opacity=on?'1':'';
-    document.querySelectorAll('svg.chile path').forEach(x=>{if(+x.dataset.cod!==cod)x.style.opacity=on?'.35':'';});
+  if(activeReg)return; // si hay región fija, no interferir
+  const path=document.querySelector(`svg.chile path[data-cod="${cod}"]`);
+  if(!path)return;
+  // resaltar región
+  if(on){
+    document.querySelectorAll('svg.chile path').forEach(x=>{x.style.opacity=(+x.dataset.cod===cod)?'1':'.3';});
+  }else{
+    document.querySelectorAll('svg.chile path').forEach(x=>{x.style.opacity='';});
   }
+  drawConnector(cod,on);
+}
+function drawConnector(cod,on){
+  const layer=document.getElementById('connectorLayer');
+  if(!layer)return;
+  if(!on){layer.innerHTML='';return;}
+  const item=document.querySelector(`.reg-item[data-cod="${cod}"]`);
+  const path=document.querySelector(`svg.chile path[data-cod="${cod}"]`);
+  const wrap=document.getElementById('mapLayout');
+  if(!item||!path||!wrap)return;
+  const wrapR=wrap.getBoundingClientRect();
+  const itemR=item.getBoundingClientRect();
+  const pathR=path.getBoundingClientRect();
+  // punto de salida: borde derecho del nombre en la lista
+  const x1=itemR.right-wrapR.left;
+  const y1=itemR.top+itemR.height/2-wrapR.top;
+  // punto de llegada: centro de la región en el mapa
+  const x2=pathR.left+pathR.width/2-wrapR.left;
+  const y2=pathR.top+pathR.height/2-wrapR.top;
+  layer.setAttribute('viewBox',`0 0 ${wrapR.width} ${wrapR.height}`);
+  layer.innerHTML=`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" class="show"/><circle cx="${x2}" cy="${y2}" r="4" class="show"/>`;
 }
 function syncRegList(){
   document.querySelectorAll('.reg-item').forEach(b=>{
