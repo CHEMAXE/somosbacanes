@@ -60,9 +60,12 @@
 
   /* ===== SECCIÓN MAPA ===== */
   .mapa-sec{max-width:1180px;margin:0 auto;padding:70px 24px 30px;display:grid;grid-template-columns:minmax(260px,360px) 1fr;gap:40px;align-items:start}
+  @media(min-width:1101px){
+    .mapa-sec{min-height:100vh;padding:84px 24px 24px;align-content:center}
+  }
   .mapa-box{position:sticky;top:80px}
-  .mapa-box h2{font-size:clamp(1.5rem,3.5vw,2.2rem);margin-bottom:6px}
-  .mapa-box p{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;opacity:.7;margin-bottom:18px;font-size:1rem}
+  .mapa-box h2{font-size:clamp(1.4rem,3vw,2rem);margin-bottom:4px}
+  .mapa-box p{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;opacity:.7;margin-bottom:14px;font-size:.92rem}
   svg.chile{width:100%;height:auto;max-height:72vh;display:block;margin:0 auto;filter:drop-shadow(0 10px 24px rgba(26,18,48,.18))}
   svg.chile path{cursor:pointer;transition:opacity .2s,transform .15s;transform-origin:center}
   svg.chile path:hover{opacity:1!important}
@@ -73,20 +76,20 @@
   .reset-btn:hover{transform:scale(1.05);background:var(--magenta)}
 
   /* lista de regiones bajo el mapa */
-  .map-layout{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start;margin-top:18px}
-  .map-col{display:flex;justify-content:center}
+  .map-layout{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch;margin-top:14px}
+  .map-col{display:flex;justify-content:center;align-items:flex-start}
   .connector-layer{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:5;overflow:visible}
   .connector-layer line{stroke:var(--magenta);stroke-width:2;stroke-dasharray:4 3;opacity:0;transition:opacity .2s}
   .connector-layer line.show{opacity:.9}
   .connector-layer circle{fill:var(--magenta);opacity:0;transition:opacity .2s}
   .connector-layer circle.show{opacity:1}
-  .reg-list{display:flex;flex-direction:column;gap:2px}
-  .reg-list .reg-item{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:9px 13px;border-radius:10px;cursor:pointer;transition:background .15s;border:none;background:none;width:100%;text-align:left;font-family:'Bricolage Grotesque',sans-serif}
+  .reg-list{display:flex;flex-direction:column;gap:1px;justify-content:space-between;height:100%}
+  .reg-list .reg-item{display:flex;justify-content:space-between;align-items:center;gap:9px;padding:5px 11px;border-radius:9px;cursor:pointer;transition:background .15s;border:none;background:none;width:100%;text-align:left;font-family:'Bricolage Grotesque',sans-serif}
   .reg-list .reg-item:hover{background:rgba(200,29,119,.08)}
   .reg-list .reg-item.active{background:var(--magenta);color:#fff}
-  .reg-list .reg-item .dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-  .reg-list .reg-item .rn{flex:1;font-weight:700;font-size:14px}
-  .reg-list .reg-item .rc{font-weight:800;font-size:12px;background:rgba(26,18,48,.1);padding:2px 9px;border-radius:100px;color:var(--tinta)}
+  .reg-list .reg-item .dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+  .reg-list .reg-item .rn{flex:1;font-weight:700;font-size:13px;line-height:1.1}
+  .reg-list .reg-item .rc{font-weight:800;font-size:11px;background:rgba(26,18,48,.1);padding:2px 8px;border-radius:100px;color:var(--tinta)}
   .reg-list .reg-item.active .rc{background:rgba(255,255,255,.28);color:#fff}
 
   /* filtros de categoría */
@@ -96,13 +99,13 @@
   .cat-btn.active{background:var(--tinta);color:#fff}
 
   /* ===== MAZO ===== */
-  .deck-head{margin-bottom:24px}
-  .deck-head h3{font-size:clamp(1.3rem,3vw,1.9rem)}
-  .deck-head .small{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;opacity:.65;margin-top:4px}
+  .deck-head{margin-bottom:14px}
+  .deck-head h3{font-size:clamp(1.1rem,2.2vw,1.5rem)}
+  .deck-head .small{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;opacity:.65;margin-top:2px;font-size:.85rem}
   .deck{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
   /* En escritorio: el panel de cartas tiene altura limitada y scroll propio */
   @media(min-width:1101px){
-    .deck{max-height:560px;overflow-y:auto;padding:4px 10px 4px 4px;align-content:start}
+    .deck{max-height:calc(100vh - 270px);overflow-y:auto;padding:4px 10px 4px 4px;align-content:start}
     .deck::-webkit-scrollbar{width:8px}
     .deck::-webkit-scrollbar-track{background:rgba(42,20,48,.06);border-radius:100px}
     .deck::-webkit-scrollbar-thumb{background:rgba(42,20,48,.22);border-radius:100px}
@@ -128,7 +131,7 @@
   .c-natura{background:linear-gradient(150deg,var(--turquesa),#0a7d9c)}.c-natura .share{color:#0a7d9c}
   .c-gente{background:linear-gradient(150deg,var(--rosa),var(--magenta))}.c-gente .share{color:var(--magenta)}
   .empty{grid-column:1/-1;text-align:center;padding:50px 20px;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;opacity:.6}
-  .more-wrap{text-align:center;margin-top:18px}
+  .more-wrap{text-align:center;margin-top:12px}
   .more-btn{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:15px;cursor:pointer;background:var(--tinta);color:#fff;border:none;border-radius:100px;padding:14px 30px;transition:transform .2s,background .2s}
   .more-btn:hover{transform:scale(1.05);background:var(--magenta)}
   .more-btn.hidden{display:none}
