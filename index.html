@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Somos Bacanes — porque Chile es bacán</title>
+<title>Somos Bacanes: porque Chile es bacán</title>
 <meta name="description" content="Porque Chile es bacán y tenemos los datos para demostrarlo. Explora el mapa región por región y mándaselo a tus amigos.">
-<meta property="og:title" content="Somos Bacanes — porque Chile es bacán">
+<meta property="og:title" content="Somos Bacanes: porque Chile es bacán">
 <meta property="og:description" content="Porque Chile es bacán y tenemos los datos para demostrarlo. Explora el mapa y súmate al movimiento.">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
@@ -41,7 +41,9 @@
   .hero .wrap{max-width:920px;margin:0 auto}
   .hero .eyebrow{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.22em;font-size:12px;color:var(--oro);margin-bottom:22px}
   .hero h1{font-size:clamp(2.8rem,10vw,7rem);text-transform:uppercase;color:#fff}
-  .hero .sub{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(1.1rem,2.8vw,1.55rem);max-width:600px;margin:26px auto 0;line-height:1.4}
+  .hero .sub{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(1.1rem,2.8vw,1.55rem);max-width:600px;margin:26px auto 0;line-height:1.4;min-height:2.8em}
+  .sub-rota{color:var(--oro);font-weight:800;display:inline-block;transition:opacity .4s,transform .4s}
+  .sub-rota.swap{opacity:0;transform:translateY(8px)}
   .hero .stat-strip{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin-top:40px}
   .hero .stat-strip div{font-family:'Bricolage Grotesque',sans-serif}
   .hero .stat-strip b{font-family:'Archivo Black',sans-serif;font-size:clamp(1.8rem,5vw,2.8rem);color:var(--oro);display:block;line-height:1}
@@ -171,7 +173,7 @@
   <div class="wrap">
     <div class="eyebrow" data-es="Datos reales · fuentes reales · orgullo real" data-en="Real data · real sources · real pride">Datos reales · fuentes reales · orgullo real</div>
     <h1 class="display">Somos Bacanes<svg class="flag-svg" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" aria-label="Chile"><rect width="30" height="20" fill="#fff"/><rect width="30" height="10" y="10" fill="#D52B1E"/><rect width="10" height="10" fill="#0039A6"/><polygon points="5,2.2 5.9,4.8 8.6,4.8 6.4,6.4 7.2,9 5,7.4 2.8,9 3.6,6.4 1.4,4.8 4.1,4.8" fill="#fff"/></svg></h1>
-    <p class="sub" data-es="De Arica a la Antártica, todo lo que nos hace bacanes. Con datos, con orgullo, con chispeza." data-en="From Arica to Antarctica, everything that makes us bacanes. With data, with pride, with ingenuity.">De Arica a la Antártica, todo lo que nos hace bacanes. Con datos, con orgullo, con chispeza.</p>
+    <p class="sub" id="heroSub"><span class="sub-fixed" data-es="Desde Arica a Magallanes, " data-en="From Arica to Magallanes, ">Desde Arica a Magallanes, </span><span class="sub-rota" id="subRota"></span></p>
     <div class="stat-strip">
       <div><b>#1</b><small data-es="del mundo en cobre" data-en="in the world for copper">del mundo en cobre</small></div>
       <div><b>40%</b><small data-es="del litio del planeta" data-en="of the planet's lithium">del litio del planeta</small></div>
@@ -183,18 +185,18 @@
 <section class="intro">
   <div class="kicker" data-es="El movimiento" data-en="The movement">El movimiento</div>
   <h2 data-es="¿Qué es ser bacán?" data-en="What does it mean to be bacán?">¿Qué es ser <span class="hl">bacán</span>?</h2>
-  <p data-es='"Bacán" es una de esas palabras que solo los chilenos entendemos del todo. Significa genial, increíble, de lo mejor — pero es más que eso.'
-     data-en='"Bacán" is one of those words only Chileans fully understand. It means awesome, amazing, the best — but it is more than that.'>"Bacán" es una de esas palabras que solo los chilenos entendemos del todo. Significa genial, increíble, de lo mejor — pero es más que eso.</p>
+  <p data-es='"Bacán" es una de esas palabras que solo los chilenos entendemos del todo. Significa genial, increíble, de lo mejor, pero es mucho más que eso.'
+     data-en='"Bacán" is one of those words only Chileans fully understand. It means awesome, amazing, the best, but it is much more than that.'>"Bacán" es una de esas palabras que solo los chilenos entendemos del todo. Significa genial, increíble, de lo mejor, pero es mucho más que eso.</p>
   <p data-es="Ser bacán es resolver con ingenio, levantarse después de cada caída, mirar las estrellas más limpias del mundo y construir los telescopios para compartirlas. Es la chispeza, la garra y el cariño hechos identidad."
      data-en="Being bacán is solving things with ingenuity, getting back up after every fall, gazing at the clearest stars on Earth and building the telescopes to share them. It is wit, grit and warmth turned into identity.">Ser bacán es resolver con ingenio, levantarse después de cada caída, mirar las estrellas más limpias del mundo y construir los telescopios para compartirlas. Es la chispeza, la garra y el cariño hechos identidad.</p>
-  <p data-es="Este es un mapa de todo eso. De Arica a la Antártica, cada región guarda razones para sentirnos orgullosos. <b>No es presumir: es reconocer, por fin y en voz alta, lo bacanes que somos.</b>"
-     data-en="This is a map of all that. From Arica to Antarctica, every region holds reasons to feel proud. <b>It is not bragging: it is finally saying out loud how bacanes we are.</b>">Este es un mapa de todo eso. De Arica a la Antártica, cada región guarda razones para sentirnos orgullosos. <b>No es presumir: es reconocer, por fin y en voz alta, lo bacanes que somos.</b></p>
+  <p data-es="Este es un mapa de todo eso. Desde Arica a Magallanes, cada región guarda razones para sentirnos orgullosos. <b>No es presumir: es reconocer, por fin y en voz alta, lo bacanes que somos.</b>"
+     data-en="This is a map of all that. From Arica to Magallanes, every region holds reasons to feel proud. <b>It is not bragging: it is finally saying out loud how bacanes we are.</b>">Este es un mapa de todo eso. Desde Arica a Magallanes, cada región guarda razones para sentirnos orgullosos. <b>No es presumir: es reconocer, por fin y en voz alta, lo bacanes que somos.</b></p>
 </section>
 
 <section class="mapa-sec">
   <div class="mapa-box">
     <h2 class="display" data-es="El Mapa Bacán" data-en="The Bacán Map">El Mapa Bacán</h2>
-    <p data-es="Pasa el mouse o toca una región para ver sus genialidades." data-en="Hover or tap a region to see its greatness.">Pasa el mouse o toca una región para ver sus genialidades.</p>
+    <p data-es="Pincha o toca tu región y descubre por qué es bacán." data-en="Click or tap your region and find out why it's bacán.">Pincha o toca tu región y descubre por qué es bacán.</p>
     <div class="map-layout" id="mapLayout">
       <div class="reg-list" id="regList"></div>
       <div class="map-col">
@@ -215,7 +217,7 @@
     </div>
     <div class="deck-head">
       <h3 class="display" id="deckTitle" data-es="Todas las genialidades" data-en="All the greatness">Todas las genialidades</h3>
-      <div class="small" id="deckSub" data-es="Toca compartir en cualquier carta y mándala." data-en="Tap share on any card and send it.">Toca compartir en cualquier carta y mándala.</div>
+      <div class="small" id="deckSub" data-es="Pincha compartir en cualquier carta y mándasela a quien quieras." data-en="Tap share on any card and send it to whoever you want.">Pincha compartir en cualquier carta y mándasela a quien quieras.</div>
     </div>
     <div class="deck" id="deck"></div>
     <div class="more-wrap"><button id="moreBtn" class="more-btn"></button></div>
@@ -239,7 +241,7 @@
   </div>
 </section>
 
-<footer><b>Somos Bacanes</b> · <span data-es="Un movimiento hecho en Chile, con chispeza" data-en="A movement made in Chile, with ingenuity">Un movimiento hecho en Chile, con chispeza</span> · #SomosBacanes</footer>
+<footer><b>Somos Bacanes</b> · <span data-es="Hecho en Chile, con harto cariño y chispeza" data-en="Made in Chile, with lots of love and ingenuity">Hecho en Chile, con harto cariño y chispeza</span> · #SomosBacanes</footer>
 <div class="toast" id="toast"></div>
 
 <script src="genialidades.js"></script>
@@ -361,7 +363,7 @@ function resetRegion(){
   document.getElementById('resetBtn').classList.remove('show');
   syncRegList();
   document.getElementById('deckTitle').textContent=LANG==='es'?'Todas las genialidades':'All the greatness';
-  document.getElementById('deckSub').textContent=LANG==='es'?'Toca compartir en cualquier carta y mándala.':'Tap share on any card and send it.';
+  document.getElementById('deckSub').textContent=LANG==='es'?'Pincha compartir en cualquier carta y mándasela a quien quieras.':'Tap share on any card and send it to whoever you want.';
   renderDeck();
 }
 document.getElementById('resetBtn').addEventListener('click',resetRegion);
@@ -418,9 +420,9 @@ document.querySelectorAll('#catFilters .cat-btn').forEach(b=>{
 });
 function shareCard(d){
   const label=(LANG==='es'?d.labelEs:d.labelEn).replace(/<[^>]+>/g,'');
-  const text=`${d.big} ${label} 🇨🇱 #SomosBacanes — ${location.href}`;
+  const text=`${d.big} ${label} 🇨🇱 #SomosBacanes · ${location.href}`;
   if(navigator.share){navigator.share({title:'Somos Bacanes',text}).catch(()=>{});}
-  else{navigator.clipboard.writeText(text).then(()=>showToast(LANG==='es'?'¡Copiado! Pégalo donde quieras 🎉':'Copied! Paste it anywhere 🎉')).catch(()=>showToast('🇨🇱'));}
+  else{navigator.clipboard.writeText(text).then(()=>showToast(LANG==='es'?'¡Listo! Ahora compártelo no más 🎉':'Done! Now go share it 🎉')).catch(()=>showToast('🇨🇱'));}
 }
 
 function setLang(l){
@@ -428,6 +430,7 @@ function setLang(l){
   document.querySelectorAll('[data-es]').forEach(el=>{const v=el.getAttribute('data-'+l);if(v!==null){if(v.indexOf('<')!==-1)el.innerHTML=v;else el.textContent=v;}});
   document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
   if(activeReg)selectRegion(activeReg,regName(activeReg));else resetRegion();
+  if(typeof pintarFrase==='function')pintarFrase();
 }
 document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
 
@@ -436,6 +439,46 @@ let toastT;function showToast(m){const t=document.getElementById('toast');t.text
 buildMap();renderDeck();
 // stats dinámicos: el total se calcula solo desde la base de datos
 (function(){var el=document.getElementById('stat-total');if(el)el.textContent=DATA.length;})();
+
+// ===== Hero dinámico: frases que van rotando =====
+const FRASES={
+  es:[
+    'todo lo que nos hace bacanes.',
+    'con datos, con orgullo, con chispeza.',
+    'el país más largo y angosto del mundo.',
+    'donde el desierto se junta con las estrellas.',
+    'cobre, vino, ciencia y aguante.',
+    'puro talento de punta a punta.',
+    'la tierra de los cielos más limpios del planeta.'
+  ],
+  en:[
+    'everything that makes us bacanes.',
+    'with data, with pride, with ingenuity.',
+    "the world's longest, narrowest country.",
+    'where the desert meets the stars.',
+    'copper, wine, science and grit.',
+    'pure talent from end to end.',
+    'home of the clearest skies on Earth.'
+  ]
+};
+let fraseIdx=0;
+function pintarFrase(){
+  const el=document.getElementById('subRota');
+  if(!el)return;
+  el.textContent=FRASES[LANG][fraseIdx % FRASES[LANG].length];
+}
+function rotarFrase(){
+  const el=document.getElementById('subRota');
+  if(!el)return;
+  el.classList.add('swap');
+  setTimeout(()=>{
+    fraseIdx++;
+    pintarFrase();
+    el.classList.remove('swap');
+  },400);
+}
+pintarFrase();
+setInterval(rotarFrase,3400);
 </script>
 </body>
 </html>

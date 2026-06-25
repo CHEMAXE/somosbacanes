@@ -1,5 +1,5 @@
 /* ============================================================
-   SOMOS BACANES — BASE DE DATOS DE GENIALIDADES
+   SOMOS BACANES · BASE DE DATOS DE GENIALIDADES
    ============================================================
    Este es el ÚNICO archivo que necesitas editar para sumar
    nuevas genialidades al mapa. Cada objeto = una carta.

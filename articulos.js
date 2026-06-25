@@ -1,5 +1,5 @@
 /* ============================================================
-   SOMOS BACANES — BASE DE DATOS DE ARTÍCULOS DEL BLOG
+   SOMOS BACANES · BASE DE DATOS DE ARTÍCULOS DEL BLOG
    ============================================================
    Este es el ÚNICO archivo que editas para sumar artículos al blog.
    Cada objeto { ... } es un artículo completo.
@@ -47,8 +47,14 @@
                Para mostrarlo, escribe [chart:su-id] en una línea del body.
 
    - sources : (opcional) lista de fuentes al final del artículo. Cada una:
-               name : nombre de la fuente (ej 'USGS - Copper Statistics 2025')
-               url  : (opcional) enlace clicable. Si lo dejas vacío, aparece solo el texto.
+               name      : qué respalda esta fuente (ej 'Producción mundial de cobre 2025').
+                           Consejo: que describa el dato, no solo el sitio.
+               publisher : (opcional) quién la publica (ej 'USGS', 'NASA', 'Science').
+                           Se muestra destacado, ayuda a evaluar la confiabilidad.
+               url       : (opcional) enlace. Usa la URL ESPECÍFICA de la página del dato,
+                           no la home del sitio. Si lo dejas vacío, aparece solo el texto.
+               accessed  : (opcional) cuándo consultaste la fuente (ej 'junio 2026').
+                           Da seriedad y transparencia (las webs cambian con el tiempo).
    ============================================================ */
 
 const ARTICULOS = [
@@ -98,9 +104,9 @@ No es casualidad ni suerte: es geografía privilegiada aprovechada con inteligen
       }
     ],
     sources:[
-      {name:'ESO — European Southern Observatory (Paranal / ELT)', url:'https://www.eso.org/'},
-      {name:'Fundación Chile / astronomía y cielos del norte', url:''},
-      {name:'NASA — pruebas de tecnología en Atacama', url:'https://www.nasa.gov/'}
+      {name:'Extremely Large Telescope (ELT): el telescopio óptico más grande del mundo', publisher:'ESO', url:'https://www.eso.org/public/teles-instr/elt/', accessed:'junio 2026'},
+      {name:'Paranal Observatory y el Very Large Telescope (VLT)', publisher:'ESO', url:'https://www.eso.org/public/teles-instr/paranal-observatory/', accessed:'junio 2026'},
+      {name:'Atacama como análogo de Marte para pruebas de tecnología', publisher:'NASA', url:'https://www.nasa.gov/', accessed:'junio 2026'}
     ]
   },
 
@@ -130,7 +136,7 @@ En 2021, la UNESCO declaró el asentamiento y la momificación artificial de la 
 
 Es una genialidad chilena que casi nadie conoce: en este rincón del mundo, hace siete mil años, un pueblo de pescadores le ganó una batalla al tiempo.`,
     sources:[
-      {name:'UNESCO — Asentamiento y momificación de la cultura Chinchorro', url:'https://whc.unesco.org/'},
+      {name:'UNESCO. Asentamiento y momificación de la cultura Chinchorro', url:'https://whc.unesco.org/'},
       {name:'Museo Arqueológico San Miguel de Azapa, Universidad de Tarapacá', url:''}
     ]
   }

@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Blog — Somos Bacanes</title>
+<title>Blog Bacán · Somos Bacanes</title>
 <meta name="description" content="Todo lo bacán de Chile, contado. Un artículo por cada genialidad, con datos y fuentes.">
-<meta property="og:title" content="Blog — Somos Bacanes">
+<meta property="og:title" content="Blog Bacán · Somos Bacanes">
 <meta property="og:description" content="Todo lo bacán de Chile, contado. Con datos, con fuentes, con orgullo.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -121,11 +121,16 @@
 
   /* fuentes */
   .a-sources{margin-top:40px;padding-top:26px;border-top:1px solid rgba(26,18,48,.12)}
-  .a-sources h3{font-family:'Archivo Black',sans-serif;font-size:1.2rem;margin-bottom:16px}
+  .a-sources h3{font-family:'Archivo Black',sans-serif;font-size:1.2rem;margin-bottom:8px}
+  .a-sources .src-intro{font-family:'Bricolage Grotesque',sans-serif;font-weight:500;font-size:.9rem;opacity:.6;margin-bottom:18px}
   .a-sources ol{margin-left:20px;font-family:'Bricolage Grotesque',sans-serif;font-weight:500}
-  .a-sources li{margin-bottom:10px;line-height:1.45;font-size:.95rem}
+  .a-sources li{margin-bottom:14px;line-height:1.4;font-size:.95rem}
   .a-sources a{color:var(--magenta);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(200,29,119,.3)}
   .a-sources a:hover{border-bottom-color:var(--magenta)}
+  .a-sources .src-name{font-weight:700}
+  .a-sources .src-meta{font-size:.82rem;opacity:.6;margin-top:3px}
+  .a-sources .src-pub{font-weight:700;color:var(--azul)}
+  .a-sources .src-date{font-style:italic}
   .article-view .a-share{margin-top:40px;padding-top:28px;border-top:1px solid rgba(26,18,48,.12);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
   .article-view .a-share span{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;opacity:.7;font-size:14px}
 
@@ -152,9 +157,9 @@
 <!-- ===== VISTA LISTA ===== -->
 <div class="list-view" id="listView">
   <header class="blog-hero">
-    <div class="eyebrow">El Faro Bacán · Genialidad por genialidad</div>
+    <div class="eyebrow">El Blog Bacán · Genialidad por genialidad</div>
     <h1 class="display">Todo lo bacán<br>de Chile, <span class="hl">contado.</span></h1>
-    <p class="sub">Un artículo por cada genialidad. Con datos, con fuentes y con orgullo — listos para leer y compartir.</p>
+    <p class="sub">Un artículo por cada genialidad. Con datos, con fuentes y con orgullo, listos para leer y compartir.</p>
   </header>
 
   <div class="cat-filters" id="catFilters">
@@ -168,11 +173,11 @@
   <div class="featured-wrap" id="featuredWrap"></div>
 
   <div class="section-title">
-    <h3 class="display">Últimas genialidades</h3>
+    <h3 class="display">Lo último y más bacán</h3>
     <div class="meta" id="postCount"></div>
   </div>
   <div class="grid" id="grid"></div>
-  <div class="more-wrap"><button id="moreBtn" class="more-btn">Cargar más genialidades</button></div>
+  <div class="more-wrap"><button id="moreBtn" class="more-btn">Quiero leer más</button></div>
 </div>
 
 <!-- ===== VISTA ARTÍCULO ===== -->
@@ -184,7 +189,7 @@
   <p class="lead">Te avisamos cada vez que sumemos nuevas genialidades. Cero spam, puro orgullo.</p>
   <div class="go"><a href="index.html#sumate" class="btn-dark" style="background:var(--tinta)">Quiero ser bacán</a></div>
 </section>
-<footer><b>Somos Bacanes</b> · Un movimiento hecho en Chile, con chispeza · #SomosBacanes</footer>
+<footer><b>Somos Bacanes</b> · Hecho en Chile, con harto cariño y chispeza · #SomosBacanes</footer>
 <div class="toast" id="toast"></div>
 
 <script src="articulos.js"></script>
@@ -295,10 +300,20 @@ function renderChart(ch){
 function renderSources(sources){
   if(!sources||!sources.length)return '';
   const items=sources.map(s=>{
-    if(s.url)return `<li><a href="${s.url}" target="_blank" rel="noopener">${esc(s.name)}</a></li>`;
-    return `<li>${esc(s.name)}</li>`;
+    const titulo = s.url
+      ? `<a href="${s.url}" target="_blank" rel="noopener">${esc(s.name)}</a>`
+      : `<span class="src-name">${esc(s.name)}</span>`;
+    const editor = s.publisher ? `<span class="src-pub">${esc(s.publisher)}</span>` : '';
+    const fecha = s.accessed ? `<span class="src-date">Consultado: ${esc(s.accessed)}</span>` : '';
+    const metaParts=[editor,fecha].filter(Boolean).join(' · ');
+    const meta = metaParts ? `<div class="src-meta">${metaParts}</div>` : '';
+    return `<li>${titulo}${meta}</li>`;
   }).join('');
-  return `<div class="a-sources"><h3>Fuentes</h3><ol>${items}</ol></div>`;
+  return `<div class="a-sources">
+    <h3>Fuentes</h3>
+    <p class="src-intro">Cada dato de este artículo está respaldado por las siguientes fuentes.</p>
+    <ol>${items}</ol>
+  </div>`;
 }
 function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function fmt(s){return esc(s).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');}
@@ -322,7 +337,7 @@ function openArticle(slug){
   document.getElementById('listView').classList.add('hide');
   v.classList.add('show');
   history.replaceState(null,'','blog.html#'+slug);
-  document.title=a.title+' — Somos Bacanes';
+  document.title=a.title+' · Somos Bacanes';
   window.scrollTo(0,0);
   // animar las barras de los gráficos
   setTimeout(()=>{v.querySelectorAll('.bar-fill').forEach(f=>{f.style.width=f.dataset.w+'%';});},100);
@@ -331,7 +346,7 @@ function closeArticle(){
   document.getElementById('articleView').classList.remove('show');
   document.getElementById('listView').classList.remove('hide');
   history.replaceState(null,'','blog.html');
-  document.title='Blog — Somos Bacanes';
+  document.title='Blog Bacán · Somos Bacanes';
   window.scrollTo(0,0);
 }
 function fmtDate(d){if(!d)return'';const[y,m,day]=d.split('-');const meses=['','enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];return `${+day} de ${meses[+m]} ${y}`;}
@@ -341,7 +356,7 @@ function shareArticle(slug){
   const url=location.origin+location.pathname+'#'+slug;
   const text=`${a.title} 🇨🇱 #SomosBacanes`;
   if(navigator.share){navigator.share({title:a.title,text,url}).catch(()=>{});}
-  else{navigator.clipboard.writeText(text+' — '+url).then(()=>showToast('¡Copiado! Pégalo donde quieras 🎉')).catch(()=>showToast('🇨🇱'));}
+  else{navigator.clipboard.writeText(text+' · '+url).then(()=>showToast('¡Listo! Ahora compártelo no más 🎉')).catch(()=>showToast('🇨🇱'));}
 }
 let toastT;function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2600);}
 
