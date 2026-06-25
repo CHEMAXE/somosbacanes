@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Blog Bacán · Somos Bacanes</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta name="description" content="Todo lo bacán de Chile, contado. Un artículo por cada genialidad, con datos y fuentes.">
 <meta property="og:title" content="Blog Bacán · Somos Bacanes">
 <meta property="og:description" content="Todo lo bacán de Chile, contado. Con datos, con fuentes, con orgullo.">
@@ -12,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--crema:#FFF6EC;--tinta:#1A1230;--rosa:#FF3D8B;--oro:#FFC42E;--magenta:#C81D77;--azul:#2B2B8F;--turquesa:#00B3A4;--naranja:#FF6B35}
+  :root{--crema:#FAF9F7;--tinta:#2A1430;--rosa:#D81F6A;--oro:#F5B920;--magenta:#D81F6A;--azul:#2B2B8F;--turquesa:#00B3A4;--naranja:#FF6B35;--rosa-suave:#FF3D8B}
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{font-family:'Inter',system-ui,sans-serif;background:var(--crema);color:var(--tinta);overflow-x:hidden;-webkit-font-smoothing:antialiased}
@@ -21,14 +22,17 @@
   a{color:inherit}
 
   nav{position:fixed;top:0;left:0;right:0;z-index:90;display:flex;justify-content:space-between;align-items:center;padding:14px 24px;background:rgba(26,18,48,.92);backdrop-filter:blur(10px)}
-  nav .logo{font-family:'Archivo Black',sans-serif;color:#fff;font-size:18px;letter-spacing:-.02em;display:flex;align-items:center;gap:9px;text-decoration:none}
-  nav .logo span{color:var(--oro)}
-  nav .flag-svg{width:28px;height:19px;border-radius:3px}
+  nav .logo{font-family:'Archivo Black',sans-serif;color:var(--crema);font-size:18px;letter-spacing:-.02em;display:flex;align-items:center;gap:8px;text-decoration:none}
+  nav .logo span{color:var(--crema)}
+  .logo-star{width:24px;height:24px;flex-shrink:0}
   nav .right{display:flex;gap:10px;align-items:center}
   nav a.nav-link{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;color:#fff;text-decoration:none;font-size:14px;opacity:.85;padding:8px 6px}
   nav a.nav-link:hover{opacity:1}
   nav a.nav-cta{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;color:var(--tinta);background:var(--oro);text-decoration:none;font-size:14px;border-radius:100px;padding:8px 18px;transition:transform .2s}
   nav a.nav-cta:hover{transform:scale(1.05)}
+  nav .lang{display:flex;background:rgba(255,255,255,.12);border-radius:100px;padding:2px}
+  nav .lang button{border:none;background:none;color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:12px;padding:5px 11px;border-radius:100px;cursor:pointer;opacity:.6}
+  nav .lang button.active{background:var(--oro);color:var(--tinta);opacity:1}
 
   .blog-hero{padding:120px 24px 30px;max-width:1180px;margin:0 auto}
   .blog-hero .eyebrow{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:.2em;font-size:12px;color:var(--magenta);margin-bottom:18px}
@@ -88,6 +92,7 @@
   .sumate .lead{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(1rem,2.2vw,1.3rem);margin:20px auto 0;max-width:520px;line-height:1.4}
   .sumate .go{margin-top:30px}
   footer{background:var(--tinta);color:rgba(255,255,255,.6);text-align:center;padding:34px 24px;font-size:13px}
+  .foot-star{width:15px;height:15px;vertical-align:middle;margin-right:4px}
   footer b{color:#fff;font-family:'Bricolage Grotesque',sans-serif}
 
   /* ===== VISTA DE ARTÍCULO ===== */
@@ -147,37 +152,38 @@
 <body>
 
 <nav>
-  <a class="logo" href="index.html">SOMOS<span>BACANES</span><svg class="flag-svg" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" aria-label="Chile"><rect width="30" height="20" fill="#fff"/><rect width="30" height="10" y="10" fill="#D52B1E"/><rect width="10" height="10" fill="#0039A6"/><polygon points="5,2.2 5.9,4.8 8.6,4.8 6.4,6.4 7.2,9 5,7.4 2.8,9 3.6,6.4 1.4,4.8 4.1,4.8" fill="#fff"/></svg></a>
+  <a class="logo" href="/"><svg class="logo-star" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M50 0 61 35 98 35 68 57 79 91 50 70 21 91 32 57 2 35 39 35Z" fill="#D81F6A"/></svg>SOMOS<span>BACANES</span></a>
   <div class="right">
-    <a href="index.html" class="nav-link">El Mapa</a>
-    <a href="index.html#sumate" class="nav-cta">Súmate</a>
+    <a href="/" class="nav-link" data-es="El Mapa" data-en="The Map">El Mapa</a>
+    <div class="lang"><button data-lang="es" class="active">ES</button><button data-lang="en">EN</button></div>
+    <a href="/#sumate" class="nav-cta" data-es="Súmate" data-en="Join">Súmate</a>
   </div>
 </nav>
 
 <!-- ===== VISTA LISTA ===== -->
 <div class="list-view" id="listView">
   <header class="blog-hero">
-    <div class="eyebrow">El Blog Bacán · Genialidad por genialidad</div>
-    <h1 class="display">Todo lo bacán<br>de Chile, <span class="hl">contado.</span></h1>
-    <p class="sub">Un artículo por cada genialidad. Con datos, con fuentes y con orgullo, listos para leer y compartir.</p>
+    <div class="eyebrow" data-es="El Blog Bacán · Genialidad por genialidad" data-en="The Bacán Blog · Wonder by wonder">El Blog Bacán · Genialidad por genialidad</div>
+    <h1 class="display" data-es="Todo lo bacán<br>de Chile, <span class='hl'>contado.</span>" data-en="Everything bacán<br>about Chile, <span class='hl'>told.</span>">Todo lo bacán<br>de Chile, <span class="hl">contado.</span></h1>
+    <p class="sub" data-es="Un artículo por cada genialidad. Con datos, con fuentes y con orgullo, listos para leer y compartir." data-en="One article for every wonder. With data, with sources and with pride, ready to read and share.">Un artículo por cada genialidad. Con datos, con fuentes y con orgullo, listos para leer y compartir.</p>
   </header>
 
   <div class="cat-filters" id="catFilters">
-    <button class="cat-btn active" data-cat="all">Todas</button>
-    <button class="cat-btn" data-cat="natura">Naturaleza</button>
-    <button class="cat-btn" data-cat="gente">Gente y Cultura</button>
-    <button class="cat-btn" data-cat="cielo">Cielo y Ciencia</button>
-    <button class="cat-btn" data-cat="recursos">Recursos</button>
+    <button class="cat-btn active" data-cat="all" data-es="Todas" data-en="All">Todas</button>
+    <button class="cat-btn" data-cat="natura" data-es="Naturaleza" data-en="Nature">Naturaleza</button>
+    <button class="cat-btn" data-cat="gente" data-es="Gente y Cultura" data-en="People &amp; Culture">Gente y Cultura</button>
+    <button class="cat-btn" data-cat="cielo" data-es="Cielo y Ciencia" data-en="Sky &amp; Science">Cielo y Ciencia</button>
+    <button class="cat-btn" data-cat="recursos" data-es="Recursos" data-en="Resources">Recursos</button>
   </div>
 
   <div class="featured-wrap" id="featuredWrap"></div>
 
   <div class="section-title">
-    <h3 class="display">Lo último y más bacán</h3>
+    <h3 class="display" data-es="Lo último y más bacán" data-en="The latest and most bacán">Lo último y más bacán</h3>
     <div class="meta" id="postCount"></div>
   </div>
   <div class="grid" id="grid"></div>
-  <div class="more-wrap"><button id="moreBtn" class="more-btn">Quiero leer más</button></div>
+  <div class="more-wrap"><button id="moreBtn" class="more-btn" data-es="Quiero leer más" data-en="I want to read more">Quiero leer más</button></div>
 </div>
 
 <!-- ===== VISTA ARTÍCULO ===== -->
@@ -187,16 +193,44 @@
 <section class="sumate">
   <h2 class="display">Sé parte del movimiento</h2>
   <p class="lead">Te avisamos cada vez que sumemos nuevas genialidades. Cero spam, puro orgullo.</p>
-  <div class="go"><a href="index.html#sumate" class="btn-dark" style="background:var(--tinta)">Quiero ser bacán</a></div>
+  <div class="go"><a href="/#sumate" class="btn-dark" style="background:var(--tinta)">Quiero ser bacán</a></div>
 </section>
-<footer><b>Somos Bacanes</b> · Hecho en Chile, con harto cariño y chispeza · #SomosBacanes</footer>
+<footer><svg class="foot-star" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M50 0 61 35 98 35 68 57 79 91 50 70 21 91 32 57 2 35 39 35Z" fill="#D81F6A"/></svg> <b>Somos Bacanes</b> · Hecho en Chile, con harto cariño y chispeza · #SomosBacanes</footer>
 <div class="toast" id="toast"></div>
 
 <script src="articulos.js"></script>
 <script>
 const GRADS={recursos:'linear-gradient(150deg,#FF6B35,#C81D77)',cielo:'linear-gradient(150deg,#2B2B8F,#5b2a8c)',natura:'linear-gradient(150deg,#00B3A4,#0a7d9c)',gente:'linear-gradient(150deg,#FF3D8B,#C81D77)'};
 const CAT_ICON={recursos:'⛏️',cielo:'🔭',natura:'🌿',gente:'🎭'};
-let activeCat='all', shown=6;
+let activeCat='all', shown=6, LANG='es';
+
+// helper: devuelve el campo en el idioma activo (L(a,'title') -> a.titleEs / a.titleEn)
+function L(obj, field){
+  const suf = LANG==='en' ? 'En' : 'Es';
+  if(obj[field+suf]!==undefined) return obj[field+suf];
+  // respaldo: si falta la traducción, usa español, luego el campo plano
+  if(obj[field+'Es']!==undefined) return obj[field+'Es'];
+  return obj[field]||'';
+}
+const UI={
+  destacado:{es:'Destacado',en:'Featured'},
+  leerArt:{es:'Leer el artículo',en:'Read the article'},
+  compartir:{es:'⤴ Compartir',en:'⤴ Share'},
+  leerFlecha:{es:'→ Leer artículo',en:'→ Read article'},
+  min:{es:'min',en:'min'},
+  vacio:{es:'Aún no hay artículos en esta categoría. ¡Pronto!',en:'No articles in this category yet. Coming soon!'},
+  articulo:{es:['artículo','artículos'],en:['article','articles']},
+  volver:{es:'← Volver al blog',en:'← Back to the blog'},
+  lectura:{es:'min de lectura',en:'min read'},
+  fuentes:{es:'Fuentes',en:'Sources'},
+  fuentesIntro:{es:'Cada dato de este artículo está respaldado por las siguientes fuentes.',en:'Every fact in this article is backed by the following sources.'},
+  consultado:{es:'Consultado',en:'Accessed'},
+  teGusto:{es:'¿Te gustó?',en:'Did you like it?'},
+  verMas:{es:'Ver más genialidades',en:'See more wonders'},
+  fuente:{es:'Fuente',en:'Source'},
+  copiado:{es:'¡Listo! Ahora compártelo no más 🎉',en:'Done! Now go share it 🎉'}
+};
+function t(key){return UI[key][LANG];}
 
 function mediaStyle(a){
   return a.image ? `background-image:url('${a.image}')` : `background:${GRADS[a.cat]}`;
@@ -214,15 +248,15 @@ function renderFeatured(){
   wrap.innerHTML=`<div class="featured" onclick="openArticle('${feat.slug}')">
     <div class="media" style="${mediaStyle(feat)}">
       <div class="ico">${CAT_ICON[feat.cat]||'★'}</div>
-      <div class="tag">${feat.region}</div>
+      <div class="tag">${L(feat,'region')}</div>
     </div>
     <div class="body">
-      <div class="klabel">Destacado · ${feat.catLabel}</div>
-      <h2>${feat.title}</h2>
-      <p>${feat.excerpt}</p>
+      <div class="klabel">${t('destacado')} · ${L(feat,'catLabel')}</div>
+      <h2>${L(feat,'title')}</h2>
+      <p>${L(feat,'excerpt')}</p>
       <div class="actions">
-        <a class="btn-dark" onclick="event.stopPropagation();openArticle('${feat.slug}')">Leer el artículo</a>
-        <button class="btn-ghost" onclick="event.stopPropagation();shareArticle('${feat.slug}')">⤴ Compartir</button>
+        <a class="btn-dark" onclick="event.stopPropagation();openArticle('${feat.slug}')">${t('leerArt')}</a>
+        <button class="btn-ghost" onclick="event.stopPropagation();shareArticle('${feat.slug}')">${t('compartir')}</button>
       </div>
     </div>
   </div>`;
@@ -232,13 +266,13 @@ function postHTML(a){
   return `<article class="post" onclick="openArticle('${a.slug}')">
     <div class="media" style="${mediaStyle(a)}">
       <div class="ico">${CAT_ICON[a.cat]||'★'}</div>
-      <div class="tag">${a.region}</div>
+      <div class="tag">${L(a,'region')}</div>
     </div>
     <div class="body">
-      <div class="klabel k-${a.cat}">${a.catLabel}</div>
-      <h4>${a.title}</h4>
-      <p>${a.excerpt}</p>
-      <div class="foot"><span class="read">→ Leer artículo</span><span class="min">${a.readMin||4} min</span></div>
+      <div class="klabel k-${a.cat}">${L(a,'catLabel')}</div>
+      <h4>${L(a,'title')}</h4>
+      <p>${L(a,'excerpt')}</p>
+      <div class="foot"><span class="read">${t('leerFlecha')}</span><span class="min">${a.readMin||4} ${t('min')}</span></div>
     </div>
   </article>`;
 }
@@ -247,8 +281,9 @@ function renderGrid(){
   const grid=document.getElementById('grid');
   const list=filtered().filter(a=>!a.featured || filtered().length===1);
   const visible=list.slice(0,shown);
-  grid.innerHTML=visible.map(postHTML).join('') || `<p style="opacity:.6;grid-column:1/-1;text-align:center;padding:40px;font-family:'Bricolage Grotesque',sans-serif;font-weight:600">Aún no hay artículos en esta categoría. ¡Pronto!</p>`;
-  document.getElementById('postCount').textContent = `${list.length} artículo${list.length!==1?'s':''}`;
+  grid.innerHTML=visible.map(postHTML).join('') || `<p style="opacity:.6;grid-column:1/-1;text-align:center;padding:40px;font-family:'Bricolage Grotesque',sans-serif;font-weight:600">${t('vacio')}</p>`;
+  const plural=list.length!==1?1:0;
+  document.getElementById('postCount').textContent = `${list.length} ${UI.articulo[LANG][plural]}`;
   const moreBtn=document.getElementById('moreBtn');
   moreBtn.classList.toggle('hidden', visible.length>=list.length);
 }
@@ -261,6 +296,17 @@ document.querySelectorAll('#catFilters .cat-btn').forEach(b=>{
     renderFeatured();renderGrid();
   });
 });
+
+// ===== switch de idioma =====
+function setLang(l){
+  LANG=l;document.documentElement.lang=l==='es'?'es-CL':'en';
+  document.querySelectorAll('[data-es]').forEach(el=>{const v=el.getAttribute('data-'+l);if(v!==null){if(v.indexOf('<')!==-1)el.innerHTML=v;else el.textContent=v;}});
+  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('active',b.dataset.lang===l));
+  renderFeatured();renderGrid();
+  const open=document.getElementById('articleView').classList.contains('show');
+  if(open){const slug=location.hash.replace('#','');if(slug)openArticle(slug);}
+}
+document.querySelectorAll('.lang button').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
 
 // markdown simple → html (con soporte de gráficos [chart:id])
 function mdToHtml(md, charts){
@@ -287,14 +333,15 @@ function renderChart(ch){
   const rows=ch.bars.map(b=>{
     const pct=Math.round((b.value/max)*100);
     return `<div class="bar-row ${b.highlight?'hl':''}">
-      <div class="bar-label"><span>${esc(b.label)}</span><span class="val">${esc(b.display||b.value+'')}</span></div>
+      <div class="bar-label"><span>${esc(L(b,'label'))}</span><span class="val">${esc(b.display||b.value+'')}</span></div>
       <div class="bar-track"><div class="bar-fill" data-w="${pct}"></div></div>
     </div>`;
   }).join('');
+  const ctitle=L(ch,'title'), csource=L(ch,'source');
   return `<div class="chart">
-    ${ch.title?`<div class="chart-title">${esc(ch.title)}</div>`:''}
+    ${ctitle?`<div class="chart-title">${esc(ctitle)}</div>`:''}
     ${rows}
-    ${ch.source?`<div class="chart-src">Fuente: ${esc(ch.source)}</div>`:''}
+    ${csource?`<div class="chart-src">${t('fuente')}: ${esc(csource)}</div>`:''}
   </div>`;
 }
 function renderSources(sources){
@@ -304,40 +351,40 @@ function renderSources(sources){
       ? `<a href="${s.url}" target="_blank" rel="noopener">${esc(s.name)}</a>`
       : `<span class="src-name">${esc(s.name)}</span>`;
     const editor = s.publisher ? `<span class="src-pub">${esc(s.publisher)}</span>` : '';
-    const fecha = s.accessed ? `<span class="src-date">Consultado: ${esc(s.accessed)}</span>` : '';
+    const fecha = s.accessed ? `<span class="src-date">${t('consultado')}: ${esc(s.accessed)}</span>` : '';
     const metaParts=[editor,fecha].filter(Boolean).join(' · ');
     const meta = metaParts ? `<div class="src-meta">${metaParts}</div>` : '';
     return `<li>${titulo}${meta}</li>`;
   }).join('');
   return `<div class="a-sources">
-    <h3>Fuentes</h3>
-    <p class="src-intro">Cada dato de este artículo está respaldado por las siguientes fuentes.</p>
+    <h3>${t('fuentes')}</h3>
+    <p class="src-intro">${t('fuentesIntro')}</p>
     <ol>${items}</ol>
   </div>`;
 }
-function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function fmt(s){return esc(s).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');}
 
 function openArticle(slug){
   const a=ARTICULOS.find(x=>x.slug===slug);if(!a)return;
   const v=document.getElementById('articleView');
   v.innerHTML=`
-    <a class="back-link" onclick="closeArticle()">← Volver al blog</a>
-    <div class="a-kicker k-${a.cat}">${a.catLabel} · ${a.region}</div>
-    <h1 class="display">${a.title}</h1>
-    <div class="a-meta">${a.readMin||4} min de lectura · ${fmtDate(a.date)}</div>
+    <a class="back-link" onclick="closeArticle()">${t('volver')}</a>
+    <div class="a-kicker k-${a.cat}">${L(a,'catLabel')} · ${L(a,'region')}</div>
+    <h1 class="display">${L(a,'title')}</h1>
+    <div class="a-meta">${a.readMin||4} ${t('lectura')} · ${fmtDate(a.date)}</div>
     <div class="a-hero" style="${mediaStyle(a)}"></div>
     ${a.imageCredit?`<div class="a-credit">${a.imageCredit}</div>`:'<div style="height:20px"></div>'}
-    <div class="a-body">${mdToHtml(a.body, a.charts)}</div>
+    <div class="a-body">${mdToHtml(L(a,'body'), a.charts)}</div>
     ${renderSources(a.sources)}
-    <div class="a-share"><span>¿Te gustó?</span>
-      <button class="btn-dark" onclick="shareArticle('${a.slug}')">⤴ Compartir</button>
-      <a class="btn-ghost" onclick="closeArticle()">Ver más genialidades</a>
+    <div class="a-share"><span>${t('teGusto')}</span>
+      <button class="btn-dark" onclick="shareArticle('${a.slug}')">${t('compartir')}</button>
+      <a class="btn-ghost" onclick="closeArticle()">${t('verMas')}</a>
     </div>`;
   document.getElementById('listView').classList.add('hide');
   v.classList.add('show');
-  history.replaceState(null,'','blog.html#'+slug);
-  document.title=a.title+' · Somos Bacanes';
+  try{history.replaceState(null,'','/blog#'+slug);}catch(e){location.hash=slug;}
+  document.title=L(a,'title')+' · Somos Bacanes';
   window.scrollTo(0,0);
   // animar las barras de los gráficos
   setTimeout(()=>{v.querySelectorAll('.bar-fill').forEach(f=>{f.style.width=f.dataset.w+'%';});},100);
@@ -345,18 +392,25 @@ function openArticle(slug){
 function closeArticle(){
   document.getElementById('articleView').classList.remove('show');
   document.getElementById('listView').classList.remove('hide');
-  history.replaceState(null,'','blog.html');
+  try{history.replaceState(null,'','/blog');}catch(e){location.hash='';}
   document.title='Blog Bacán · Somos Bacanes';
   window.scrollTo(0,0);
 }
-function fmtDate(d){if(!d)return'';const[y,m,day]=d.split('-');const meses=['','enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];return `${+day} de ${meses[+m]} ${y}`;}
+function fmtDate(d){
+  if(!d)return'';const[y,m,day]=d.split('-');
+  const mesesEs=['','enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+  const mesesEn=['','January','February','March','April','May','June','July','August','September','October','November','December'];
+  if(LANG==='es')return `${+day} de ${mesesEs[+m]} ${y}`;
+  return `${mesesEn[+m]} ${+day}, ${y}`;
+}
 
 function shareArticle(slug){
   const a=ARTICULOS.find(x=>x.slug===slug);if(!a)return;
   const url=location.origin+location.pathname+'#'+slug;
-  const text=`${a.title} 🇨🇱 #SomosBacanes`;
-  if(navigator.share){navigator.share({title:a.title,text,url}).catch(()=>{});}
-  else{navigator.clipboard.writeText(text+' · '+url).then(()=>showToast('¡Listo! Ahora compártelo no más 🎉')).catch(()=>showToast('🇨🇱'));}
+  const title=L(a,'title');
+  const text=`${title} 🇨🇱 #SomosBacanes`;
+  if(navigator.share){navigator.share({title:title,text,url}).catch(()=>{});}
+  else{navigator.clipboard.writeText(text+' · '+url).then(()=>showToast(t('copiado'))).catch(()=>showToast('🇨🇱'));}
 }
 let toastT;function showToast(m){const t=document.getElementById('toast');t.textContent=m;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),2600);}
 

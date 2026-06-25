@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Somos Bacanes: porque Chile es bacán</title>
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta name="description" content="Porque Chile es bacán y tenemos los datos para demostrarlo. Explora el mapa región por región y mándaselo a tus amigos.">
 <meta property="og:title" content="Somos Bacanes: porque Chile es bacán">
 <meta property="og:description" content="Porque Chile es bacán y tenemos los datos para demostrarlo. Explora el mapa y súmate al movimiento.">
@@ -13,7 +14,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-  :root{--crema:#FFF6EC;--tinta:#1A1230;--rosa:#FF3D8B;--oro:#FFC42E;--magenta:#C81D77;--azul:#2B2B8F;--turquesa:#00B3A4;--naranja:#FF6B35}
+  :root{--crema:#FAF9F7;--tinta:#2A1430;--rosa:#D81F6A;--oro:#F5B920;--magenta:#D81F6A;--azul:#2B2B8F;--turquesa:#00B3A4;--naranja:#FF6B35;--rosa-suave:#FF3D8B}
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{font-family:'Inter',system-ui,sans-serif;background:var(--crema);color:var(--tinta);overflow-x:hidden;-webkit-font-smoothing:antialiased}
@@ -21,13 +22,12 @@
   .display{font-family:'Archivo Black',sans-serif;line-height:.92;letter-spacing:-.02em}
 
   nav{position:fixed;top:0;left:0;right:0;z-index:90;display:flex;justify-content:space-between;align-items:center;padding:14px 24px;background:rgba(26,18,48,.85);backdrop-filter:blur(10px)}
-  nav .logo{font-family:'Archivo Black',sans-serif;color:#fff;font-size:18px;letter-spacing:-.02em}
-  nav .logo span{color:var(--oro)}
+  nav .logo{font-family:'Archivo Black',sans-serif;color:var(--crema);font-size:18px;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
+  nav .logo span{color:var(--crema)}
+  .logo-star{width:24px;height:24px;flex-shrink:0}
   .flag-svg{border-radius:3px;box-shadow:0 1px 4px rgba(0,0,0,.4);vertical-align:middle;flex-shrink:0}
-  nav .logo{display:flex;align-items:center;gap:9px}
-  nav .logo .flag-svg{width:28px;height:19px}
   .hero h1{display:flex;align-items:center;justify-content:center;gap:clamp(14px,3vw,28px);flex-wrap:wrap}
-  .hero h1 .flag-svg{width:clamp(48px,9vw,84px);height:auto;aspect-ratio:3/2}
+  .hero h1 .hero-star{width:clamp(54px,10vw,90px);height:auto;flex-shrink:0}
   nav .right{display:flex;gap:10px;align-items:center}
   .lang{display:flex;border:2px solid rgba(255,255,255,.35);border-radius:100px;overflow:hidden;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:13px}
   .lang button{background:none;border:none;color:rgba(255,255,255,.7);padding:6px 14px;cursor:pointer;transition:background .2s,color .2s}
@@ -142,6 +142,7 @@
   .counter{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;margin-top:40px;font-size:17px}
   .counter b{font-size:28px;color:var(--oro);display:block}
   footer{background:var(--tinta);color:rgba(255,255,255,.6);text-align:center;padding:36px 24px;font-size:13px}
+  .foot-star{width:15px;height:15px;vertical-align:middle;margin-right:4px}
   footer b{color:#fff;font-family:'Bricolage Grotesque',sans-serif}
   .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--tinta);color:#fff;padding:14px 24px;border-radius:100px;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;z-index:200;transition:transform .35s;box-shadow:0 10px 30px rgba(0,0,0,.3);max-width:90vw}
   .toast.show{transform:translateX(-50%) translateY(0)}
@@ -161,9 +162,9 @@
 <body>
 
 <nav>
-  <div class="logo">SOMOS<span>BACANES</span><svg class="flag-svg" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" aria-label="Chile"><rect width="30" height="20" fill="#fff"/><rect width="30" height="10" y="10" fill="#D52B1E"/><rect width="10" height="10" fill="#0039A6"/><polygon points="5,2.2 5.9,4.8 8.6,4.8 6.4,6.4 7.2,9 5,7.4 2.8,9 3.6,6.4 1.4,4.8 4.1,4.8" fill="#fff"/></svg></div>
+  <div class="logo"><svg class="logo-star" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M50 0 61 35 98 35 68 57 79 91 50 70 21 91 32 57 2 35 39 35Z" fill="#D81F6A"/></svg>SOMOS<span>BACANES</span></div>
   <div class="right">
-    <a href="blog.html" class="nav-link" data-es="Blog" data-en="Blog">Blog</a>
+    <a href="/blog" class="nav-link" data-es="Blog" data-en="Blog">Blog</a>
     <div class="lang"><button data-lang="es" class="active">ES</button><button data-lang="en">EN</button></div>
     <a href="#sumate" class="nav-cta" data-es="Súmate" data-en="Join">Súmate</a>
   </div>
@@ -172,7 +173,7 @@
 <section class="hero">
   <div class="wrap">
     <div class="eyebrow" data-es="Datos reales · fuentes reales · orgullo real" data-en="Real data · real sources · real pride">Datos reales · fuentes reales · orgullo real</div>
-    <h1 class="display">Somos Bacanes<svg class="flag-svg" viewBox="0 0 30 20" xmlns="http://www.w3.org/2000/svg" aria-label="Chile"><rect width="30" height="20" fill="#fff"/><rect width="30" height="10" y="10" fill="#D52B1E"/><rect width="10" height="10" fill="#0039A6"/><polygon points="5,2.2 5.9,4.8 8.6,4.8 6.4,6.4 7.2,9 5,7.4 2.8,9 3.6,6.4 1.4,4.8 4.1,4.8" fill="#fff"/></svg></h1>
+    <h1 class="display">Somos Bacanes<svg class="hero-star" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M50 0 61 35 98 35 68 57 79 91 50 70 21 91 32 57 2 35 39 35Z" fill="#FAF9F7"/></svg></h1>
     <p class="sub" id="heroSub"><span class="sub-fixed" data-es="Desde Arica a Magallanes, " data-en="From Arica to Magallanes, ">Desde Arica a Magallanes, </span><span class="sub-rota" id="subRota"></span></p>
     <div class="stat-strip">
       <div><b>#1</b><small data-es="del mundo en cobre" data-en="in the world for copper">del mundo en cobre</small></div>
@@ -241,7 +242,7 @@
   </div>
 </section>
 
-<footer><b>Somos Bacanes</b> · <span data-es="Hecho en Chile, con harto cariño y chispeza" data-en="Made in Chile, with lots of love and ingenuity">Hecho en Chile, con harto cariño y chispeza</span> · #SomosBacanes</footer>
+<footer><svg class="foot-star" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M50 0 61 35 98 35 68 57 79 91 50 70 21 91 32 57 2 35 39 35Z" fill="#D81F6A"/></svg> <b>Somos Bacanes</b> · <span data-es="Hecho en Chile, con harto cariño y chispeza" data-en="Made in Chile, with lots of love and ingenuity">Hecho en Chile, con harto cariño y chispeza</span> · #SomosBacanes</footer>
 <div class="toast" id="toast"></div>
 
 <script src="genialidades.js"></script>
@@ -250,11 +251,11 @@ const REGIONES=[{"cod": 15, "corto": "Arica y Parinacota", "d": "M253.8,63.1L251
 /* DATA se carga desde genialidades.js */
 
 let LANG='es', activeReg=null, activeCat='all';
-const REGION_COLORS={15:'#FF3D8B',1:'#FF6B35',2:'#FFC42E',3:'#C81D77',4:'#FF3D8B',5:'#FF6B35',13:'#FFC42E',6:'#C81D77',7:'#00B3A4',16:'#FF3D8B',8:'#FF6B35',9:'#FFC42E',14:'#00B3A4',10:'#C81D77',11:'#00B3A4',12:'#2B2B8F'};
+const REGION_COLORS={15:'#D81F6A',1:'#FF6B35',2:'#F5B920',3:'#A01655',4:'#D81F6A',5:'#FF6B35',13:'#F5B920',6:'#A01655',7:'#00B3A4',16:'#D81F6A',8:'#FF6B35',9:'#F5B920',14:'#00B3A4',10:'#A01655',11:'#00B3A4',12:'#2B2B8F'};
 
 // construir SVG del mapa
 function buildMap(){
-  let paths=REGIONES.map(r=>`<path d="${r.d}" fill="${REGION_COLORS[r.cod]}" stroke="#FFF6EC" stroke-width="0.8" data-cod="${r.cod}" data-nom="${r.corto}"><title>${r.corto}</title></path>`).join('');
+  let paths=REGIONES.map(r=>`<path d="${r.d}" fill="${REGION_COLORS[r.cod]}" stroke="#FAF9F7" stroke-width="0.8" data-cod="${r.cod}" data-nom="${r.corto}"><title>${r.corto}</title></path>`).join('');
   document.getElementById('svg-holder').innerHTML=`<svg class="chile" viewBox="0 0 360 1500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Mapa de Chile">${paths}</svg>`;
   document.querySelectorAll('svg.chile path').forEach(p=>{
     p.addEventListener('click',()=>selectRegion(+p.dataset.cod, p.dataset.nom));
@@ -373,7 +374,7 @@ function cardHTML(d,idx){
         label=LANG==='es'?d.labelEs:d.labelEn, vs=LANG==='es'?d.vsEs:d.vsEn,
         shareLabel=LANG==='es'?'⤴ Compartir':'⤴ Share', srcLabel=LANG==='es'?'Fuente':'Source',
         readLabel=LANG==='es'?'Leer más →':'Read more →';
-  const readBtn = d.slug ? `<a class="read-more" href="blog.html#${d.slug}">${readLabel}</a>` : '';
+  const readBtn = d.slug ? `<a class="read-more" href="/blog#${d.slug}">${readLabel}</a>` : '';
   return `<article class="card c-${d.cat}" data-idx="${idx}">
     <div class="cat">${cat}</div><div class="rank">${rank}</div>
     <div class="big">${d.big}</div><div class="label">${label}</div>
