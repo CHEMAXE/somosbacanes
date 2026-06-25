@@ -25,6 +25,14 @@
               un botón "Leer más" que lleva al artículo.
               Ej: slug:'momias-chinchorro'. Si no hay artículo, omítelo.
 
+              ¡IMPORTANTE! Cuando una carta tiene 'slug', NO necesitas repetir
+              los datos que ya están en el artículo. La carta los HEREDA solos:
+              categoría (cat, catEs, catEn), y si no escribes labelEs/vsEs, usa
+              el título y resumen del artículo. Así no escribes lo mismo 2 veces.
+              Lo único que SIEMPRE debes poner en una carta con slug es:
+                reg (región), big (la cifra grande) y slug.
+              El resto es opcional: si lo pones, manda la carta; si no, hereda.
+
    TABLA DE CÓDIGOS DE REGIÓN (norte → sur):
      15 = Arica y Parinacota      8  = Biobío
      1  = Tarapacá                9  = La Araucanía
