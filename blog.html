@@ -106,6 +106,26 @@
   .article-view .a-body blockquote{border-left:4px solid var(--magenta);padding:6px 0 6px 20px;margin:26px 0;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:1.25rem;font-style:italic;color:var(--magenta)}
   .article-view .a-body ul{margin:0 0 20px 22px}
   .article-view .a-body li{margin-bottom:8px}
+
+  /* gráficos de barras */
+  .chart{margin:30px 0;padding:24px;background:#fff;border-radius:16px;box-shadow:0 6px 22px rgba(26,18,48,.08)}
+  .chart .chart-title{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:15px;margin-bottom:18px}
+  .chart .bar-row{margin-bottom:14px}
+  .chart .bar-row:last-child{margin-bottom:0}
+  .chart .bar-label{display:flex;justify-content:space-between;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;margin-bottom:5px}
+  .chart .bar-label .val{font-weight:800;color:var(--magenta)}
+  .chart .bar-track{height:14px;background:rgba(26,18,48,.07);border-radius:100px;overflow:hidden}
+  .chart .bar-fill{height:100%;border-radius:100px;background:linear-gradient(90deg,var(--rosa),var(--magenta));width:0;transition:width 1.1s cubic-bezier(.22,1,.36,1)}
+  .chart .bar-row.hl .bar-fill{background:linear-gradient(90deg,var(--oro),var(--naranja))}
+  .chart .chart-src{font-size:11px;opacity:.5;margin-top:14px}
+
+  /* fuentes */
+  .a-sources{margin-top:40px;padding-top:26px;border-top:1px solid rgba(26,18,48,.12)}
+  .a-sources h3{font-family:'Archivo Black',sans-serif;font-size:1.2rem;margin-bottom:16px}
+  .a-sources ol{margin-left:20px;font-family:'Bricolage Grotesque',sans-serif;font-weight:500}
+  .a-sources li{margin-bottom:10px;line-height:1.45;font-size:.95rem}
+  .a-sources a{color:var(--magenta);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(200,29,119,.3)}
+  .a-sources a:hover{border-bottom-color:var(--magenta)}
   .article-view .a-share{margin-top:40px;padding-top:28px;border-top:1px solid rgba(26,18,48,.12);display:flex;gap:10px;align-items:center;flex-wrap:wrap}
   .article-view .a-share span{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;opacity:.7;font-size:14px}
 
@@ -132,9 +152,9 @@
 <!-- ===== VISTA LISTA ===== -->
 <div class="list-view" id="listView">
   <header class="blog-hero">
-    <div class="eyebrow">El Blog Bacán · Genialidad por genialidad</div>
+    <div class="eyebrow">El Faro Bacán · Genialidad por genialidad</div>
     <h1 class="display">Todo lo bacán<br>de Chile, <span class="hl">contado.</span></h1>
-    <p class="sub">Un artículo por cada genialidad. Con datos, con fuentes y con orgullo, listos para leer y compartir.</p>
+    <p class="sub">Un artículo por cada genialidad. Con datos, con fuentes y con orgullo — listos para leer y compartir.</p>
   </header>
 
   <div class="cat-filters" id="catFilters">
@@ -237,12 +257,18 @@ document.querySelectorAll('#catFilters .cat-btn').forEach(b=>{
   });
 });
 
-// markdown simple → html
-function mdToHtml(md){
+// markdown simple → html (con soporte de gráficos [chart:id])
+function mdToHtml(md, charts){
   const lines=md.split('\n');let html='',inList=false;
   for(let raw of lines){
     const line=raw.trim();
-    if(line.startsWith('## ')){if(inList){html+='</ul>';inList=false;}html+=`<h2>${esc(line.slice(3))}</h2>`;}
+    const chartMatch=line.match(/^\[chart:(.+?)\]$/);
+    if(chartMatch){
+      if(inList){html+='</ul>';inList=false;}
+      const ch=(charts||[]).find(c=>c.id===chartMatch[1]);
+      if(ch)html+=renderChart(ch);
+    }
+    else if(line.startsWith('## ')){if(inList){html+='</ul>';inList=false;}html+=`<h2>${esc(line.slice(3))}</h2>`;}
     else if(line.startsWith('> ')){if(inList){html+='</ul>';inList=false;}html+=`<blockquote>${fmt(line.slice(2))}</blockquote>`;}
     else if(line.startsWith('- ')){if(!inList){html+='<ul>';inList=true;}html+=`<li>${fmt(line.slice(2))}</li>`;}
     else if(line===''){if(inList){html+='</ul>';inList=false;}}
@@ -250,6 +276,29 @@ function mdToHtml(md){
   }
   if(inList)html+='</ul>';
   return html;
+}
+function renderChart(ch){
+  const max=Math.max(...ch.bars.map(b=>b.value));
+  const rows=ch.bars.map(b=>{
+    const pct=Math.round((b.value/max)*100);
+    return `<div class="bar-row ${b.highlight?'hl':''}">
+      <div class="bar-label"><span>${esc(b.label)}</span><span class="val">${esc(b.display||b.value+'')}</span></div>
+      <div class="bar-track"><div class="bar-fill" data-w="${pct}"></div></div>
+    </div>`;
+  }).join('');
+  return `<div class="chart">
+    ${ch.title?`<div class="chart-title">${esc(ch.title)}</div>`:''}
+    ${rows}
+    ${ch.source?`<div class="chart-src">Fuente: ${esc(ch.source)}</div>`:''}
+  </div>`;
+}
+function renderSources(sources){
+  if(!sources||!sources.length)return '';
+  const items=sources.map(s=>{
+    if(s.url)return `<li><a href="${s.url}" target="_blank" rel="noopener">${esc(s.name)}</a></li>`;
+    return `<li>${esc(s.name)}</li>`;
+  }).join('');
+  return `<div class="a-sources"><h3>Fuentes</h3><ol>${items}</ol></div>`;
 }
 function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
 function fmt(s){return esc(s).replace(/\*\*(.+?)\*\*/g,'<strong>$1</strong>');}
@@ -264,21 +313,24 @@ function openArticle(slug){
     <div class="a-meta">${a.readMin||4} min de lectura · ${fmtDate(a.date)}</div>
     <div class="a-hero" style="${mediaStyle(a)}"></div>
     ${a.imageCredit?`<div class="a-credit">${a.imageCredit}</div>`:'<div style="height:20px"></div>'}
-    <div class="a-body">${mdToHtml(a.body)}</div>
+    <div class="a-body">${mdToHtml(a.body, a.charts)}</div>
+    ${renderSources(a.sources)}
     <div class="a-share"><span>¿Te gustó?</span>
       <button class="btn-dark" onclick="shareArticle('${a.slug}')">⤴ Compartir</button>
       <a class="btn-ghost" onclick="closeArticle()">Ver más genialidades</a>
     </div>`;
   document.getElementById('listView').classList.add('hide');
   v.classList.add('show');
-  history.replaceState(null,'','blog#'+slug);
+  history.replaceState(null,'','blog.html#'+slug);
   document.title=a.title+' — Somos Bacanes';
   window.scrollTo(0,0);
+  // animar las barras de los gráficos
+  setTimeout(()=>{v.querySelectorAll('.bar-fill').forEach(f=>{f.style.width=f.dataset.w+'%';});},100);
 }
 function closeArticle(){
   document.getElementById('articleView').classList.remove('show');
   document.getElementById('listView').classList.remove('hide');
-  history.replaceState(null,'','blog');
+  history.replaceState(null,'','blog.html');
   document.title='Blog — Somos Bacanes';
   window.scrollTo(0,0);
 }

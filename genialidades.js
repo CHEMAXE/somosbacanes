@@ -20,6 +20,10 @@
    - labelEs/labelEn : la frase principal bajo la cifra.
    - vsEs/vsEn : el recuadro "Chile vs el mundo". Acepta <b>negrita</b>.
    - src    : la fuente del dato (se muestra abajo, da credibilidad).
+   - slug   : (OPCIONAL) conecta esta carta con un artículo del blog.
+              Pon el mismo 'slug' del artículo en articulos.js y aparecerá
+              un botón "Leer más" que lleva al artículo.
+              Ej: slug:'momias-chinchorro'. Si no hay artículo, omítelo.
 
    TABLA DE CÓDIGOS DE REGIÓN (norte → sur):
      15 = Arica y Parinacota      8  = Biobío
@@ -43,7 +47,7 @@ const DATA = [
    labelEs:'años tienen las momias Chinchorro, las más antiguas del mundo',labelEn:'years old: the Chinchorro mummies, the oldest in the world',
    vsEs:'Más antiguas que las egipcias por <b>dos mil años</b>. Patrimonio de la Humanidad UNESCO.',
    vsEn:'Older than the Egyptian ones by <b>two thousand years</b>. A UNESCO World Heritage treasure.',
-   src:'UNESCO'},
+   src:'UNESCO', slug:'momias-chinchorro'},
   {reg:15,cat:'natura',catEs:'Naturaleza',catEn:'Nature',rankEs:'Eterna primavera',rankEn:'Eternal spring',big:'18°C',
    labelEs:'Arica: temperatura casi perfecta todo el año, "ciudad de la eterna primavera"',labelEn:'Arica: near-perfect temperature year-round, the "city of eternal spring"',
    vsEs:'Una de las ciudades <b>más secas del planeta</b> (0,5 mm de lluvia al año) y de clima más estable.',
@@ -107,7 +111,7 @@ const DATA = [
    labelEs:'Cerro Paranal: el observatorio de luz visible más avanzado del mundo',labelEn:'Cerro Paranal: the most advanced visible-light observatory in the world',
    vsEs:'Sus telescopios ven objetos <b>4.000 millones de veces más débiles</b> que lo que percibe el ojo humano.',
    vsEn:'Its telescopes see objects <b>4 billion times fainter</b> than the human eye can detect.',
-   src:'ESO'},
+   src:'ESO', slug:'desierto-atacama-cielos'},
   {reg:2,cat:'natura',catEs:'Naturaleza',catEn:'Nature',rankEs:'Paisaje marciano',rankEn:'Martian landscape',big:'🌗',
    labelEs:'el Valle de la Luna en San Pedro: tan parecido a otro planeta que la NASA lo usa',labelEn:'the Valley of the Moon in San Pedro: so otherworldly that NASA uses it',
    vsEs:'Dunas, sal y formaciones que parecen <b>la superficie de Marte</b>. Atardeceres de otro mundo.',

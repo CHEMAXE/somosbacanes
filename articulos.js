@@ -33,6 +33,22 @@
                **texto**         → negrita
                > Cita            → una cita destacada
                - item            → viñeta de lista
+               [chart:id]        → inserta un gráfico (ver campo 'charts' abajo)
+
+   - charts  : (opcional) lista de gráficos de barras. Cada gráfico tiene:
+               id     : nombre único para llamarlo desde el body con [chart:id]
+               title  : título del gráfico
+               source : fuente del gráfico (texto corto)
+               bars   : lista de barras, cada una con:
+                        label    : nombre de la barra
+                        value    : número (para calcular el largo de la barra)
+                        display  : (opcional) texto a mostrar (ej '23%' o '5,3M ton')
+                        highlight: (opcional) true para resaltar en dorado (ej. Chile)
+               Para mostrarlo, escribe [chart:su-id] en una línea del body.
+
+   - sources : (opcional) lista de fuentes al final del artículo. Cada una:
+               name : nombre de la fuente (ej 'USGS - Copper Statistics 2025')
+               url  : (opcional) enlace clicable. Si lo dejas vacío, aparece solo el texto.
    ============================================================ */
 
 const ARTICULOS = [
@@ -67,7 +83,25 @@ En Cerro Armazones se levanta el Extremely Large Telescope (ELT), que cuando est
 
 Esta década, cerca del 70% de la capacidad de observación astronómica del planeta estará concentrada en suelo chileno. Eso convierte al país en un protagonista silencioso de los grandes descubrimientos sobre el origen del universo, los exoplanetas y la materia oscura.
 
-No es casualidad ni suerte: es geografía privilegiada aprovechada con inteligencia. Y es, sin duda, una de las cosas más bacanes de Chile.`
+[chart:astro]
+
+No es casualidad ni suerte: es geografía privilegiada aprovechada con inteligencia. Y es, sin duda, una de las cosas más bacanes de Chile.`,
+    charts:[
+      {
+        id:'astro',
+        title:'Capacidad de observación astronómica mundial (proyección década)',
+        source:'Estimaciones de la industria astronómica',
+        bars:[
+          {label:'Chile', value:70, display:'≈70%', highlight:true},
+          {label:'Resto del mundo', value:30, display:'≈30%'}
+        ]
+      }
+    ],
+    sources:[
+      {name:'ESO — European Southern Observatory (Paranal / ELT)', url:'https://www.eso.org/'},
+      {name:'Fundación Chile / astronomía y cielos del norte', url:''},
+      {name:'NASA — pruebas de tecnología en Atacama', url:'https://www.nasa.gov/'}
+    ]
   },
 
   {
@@ -94,7 +128,11 @@ A diferencia de los egipcios, que momificaban principalmente a la realeza, **los
 
 En 2021, la UNESCO declaró el asentamiento y la momificación artificial de la cultura Chinchorro como Patrimonio de la Humanidad, reconociendo su valor único para entender la historia de la humanidad.
 
-Es una genialidad chilena que casi nadie conoce: en este rincón del mundo, hace siete mil años, un pueblo de pescadores le ganó una batalla al tiempo.`
+Es una genialidad chilena que casi nadie conoce: en este rincón del mundo, hace siete mil años, un pueblo de pescadores le ganó una batalla al tiempo.`,
+    sources:[
+      {name:'UNESCO — Asentamiento y momificación de la cultura Chinchorro', url:'https://whc.unesco.org/'},
+      {name:'Museo Arqueológico San Miguel de Azapa, Universidad de Tarapacá', url:''}
+    ]
   }
 
 ];
