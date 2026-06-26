@@ -11,9 +11,9 @@
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  :root{--crema:#FAF9F7;--tinta:#2A1430;--rosa:#D81F6A;--oro:#F5B920;--magenta:#D81F6A;--azul:#2B2B8F;--turquesa:#00B3A4;--naranja:#FF6B35;--rosa-suave:#FF3D8B}
+  :root{--crema:#FAF9F7;--tinta:#2A1A36;--rosa:#E0257A;--oro:#FFC220;--magenta:#E0257A;--azul:#6B2C8F;--turquesa:#FFC220;--naranja:#FF6B35;--morado:#6B2C8F;--sol:#FFC220}
   *{margin:0;padding:0;box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{font-family:'Inter',system-ui,sans-serif;background:var(--crema);color:var(--tinta);overflow-x:hidden;-webkit-font-smoothing:antialiased}
@@ -24,7 +24,7 @@
   nav{position:fixed;top:0;left:0;right:0;z-index:90;display:flex;justify-content:space-between;align-items:center;padding:14px 24px;background:rgba(26,18,48,.92);backdrop-filter:blur(10px)}
   nav .logo{font-family:'Archivo Black',sans-serif;color:var(--crema);font-size:18px;letter-spacing:-.02em;display:flex;align-items:center;gap:8px;text-decoration:none}
   nav .logo span{color:var(--crema)}
-  .logo-star{width:24px;height:24px;flex-shrink:0}
+  .logo-sol{width:30px;height:28px;flex-shrink:0}
   nav .right{display:flex;gap:10px;align-items:center}
   nav a.nav-link{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;color:#fff;text-decoration:none;font-size:14px;opacity:.85;padding:8px 6px}
   nav a.nav-link:hover{opacity:1}
@@ -92,7 +92,7 @@
   .sumate .lead{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(1rem,2.2vw,1.3rem);margin:20px auto 0;max-width:520px;line-height:1.4}
   .sumate .go{margin-top:30px}
   footer{background:var(--tinta);color:rgba(255,255,255,.6);text-align:center;padding:34px 24px;font-size:13px}
-  .foot-star{width:15px;height:15px;vertical-align:middle;margin-right:4px}
+  .foot-sol{width:18px;height:17px;vertical-align:middle;margin-right:5px}
   footer b{color:#fff;font-family:'Bricolage Grotesque',sans-serif}
 
   /* ===== VISTA DE ARTÍCULO ===== */
@@ -152,7 +152,7 @@
 <body>
 
 <nav>
-  <a class="logo" href="/"><svg class="logo-star" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M50 0 61 35 98 35 68 57 79 91 50 70 21 91 32 57 2 35 39 35Z" fill="#D81F6A"/></svg>SOMOS<span>BACANES</span></a>
+  <a class="logo" href="/"><svg class="logo-sol" viewBox="0 0 120 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="navSolB" x1="0" y1="0" x2="0.85" y2="1"><stop offset="0" stop-color="#FFC222"/><stop offset=".32" stop-color="#F5852E"/><stop offset=".6" stop-color="#D81E79"/><stop offset="1" stop-color="#5E2A86"/></linearGradient><clipPath id="navSolBClip"><circle cx="60" cy="50" r="46"/></clipPath></defs><circle cx="60" cy="50" r="46" fill="url(#navSolB)"/><g clip-path="url(#navSolBClip)"><path d="M0 102 L26 70 L42 88 L60 58 L80 86 L98 68 L120 102 Z" fill="#fff"/></g></svg>SOMOS<span>BACANES</span></a>
   <div class="right">
     <a href="/" class="nav-link" data-es="El Mapa" data-en="The Map">El Mapa</a>
     <div class="lang"><button data-lang="es" class="active">ES</button><button data-lang="en">EN</button></div>
@@ -195,7 +195,7 @@
   <p class="lead">Te avisamos cada vez que sumemos nuevas genialidades. Cero spam, puro orgullo.</p>
   <div class="go"><a href="/#sumate" class="btn-dark" style="background:var(--tinta)">Quiero ser bacán</a></div>
 </section>
-<footer><svg class="foot-star" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M50 0 61 35 98 35 68 57 79 91 50 70 21 91 32 57 2 35 39 35Z" fill="#D81F6A"/></svg> <b>Somos Bacanes</b> · Hecho en Chile, con harto cariño y chispeza · #SomosBacanes</footer>
+<footer><svg class="foot-sol" viewBox="0 0 120 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="footSolB" x1="0" y1="0" x2="0.85" y2="1"><stop offset="0" stop-color="#FFC222"/><stop offset=".32" stop-color="#F5852E"/><stop offset=".6" stop-color="#D81E79"/><stop offset="1" stop-color="#5E2A86"/></linearGradient><clipPath id="footSolBClip"><circle cx="60" cy="50" r="46"/></clipPath></defs><circle cx="60" cy="50" r="46" fill="url(#footSolB)"/><g clip-path="url(#footSolBClip)"><path d="M0 102 L26 70 L42 88 L60 58 L80 86 L98 68 L120 102 Z" fill="#fff"/></g></svg> <b>Somos Bacanes</b> · Hecho en Chile, con harto cariño y chispeza · #SomosBacanes</footer>
 <div class="toast" id="toast"></div>
 
 <script src="articulos.js"></script>
