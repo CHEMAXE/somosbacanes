@@ -261,7 +261,11 @@ Behind these numbers lies a long institutional story. Servel turned one hundred 
 
 ## Una obra contra la geografía
 
-La magnitud del desafío de ingeniería no admite comparaciones fáciles. La ruta atraviesa una geografía donde se acumulan glaciares, lagos de origen glacial, ríos caudalosos, montañas y un sistema de fiordos que se cuenta entre los más extensos del mundo. Buena parte del trazado debió abrirse a través de bosque denso y laderas de granito, en una zona donde las **condiciones climáticas extremas** dañan el camino cada invierno y obligan a una mantención permanente. No es casualidad que aún hoy, a mediados de 2025, solo cerca del 45% de la ruta esté pavimentada según reportes del sector; el resto es ripio que se resiste a la uniformidad.
+La magnitud del desafío de ingeniería no admite comparaciones fáciles. La ruta atraviesa una geografía donde se acumulan glaciares, lagos de origen glacial, ríos caudalosos, montañas y un sistema de fiordos que se cuenta entre los más extensos del mundo. Buena parte del trazado debió abrirse a través de bosque denso y laderas de granito, en una zona donde las **condiciones climáticas extremas** dañan el camino cada invierno y obligan a una mantención permanente. Según el Ministerio de Obras Públicas, en el corredor priorizado entre Puerto Montt y Villa O'Higgins se han pavimentado 614,5 kilómetros desde 1995, un **58% del trazado**, mientras los 443,5 kilómetros restantes siguen en ripio, sobre todo en el extremo sur. El camino se resiste a la uniformidad, y esa textura mixta de asfalto y tierra es parte de su carácter.
+
+[chart:pavimentacion-carretera-austral]
+
+Para acelerar lo que falta, en 2026 el Estado anunció el plan **Ruta Austral: Soberanía que Conecta**, una inversión cercana a los 800.393 millones de pesos para el período 2026-2030 que quintuplica el ritmo histórico de inversión y busca un estándar de pavimento uniforme entre Puerto Montt y Cochrane.
 
 La construcción movilizó a más de 10.000 soldados a través del **Cuerpo Militar del Trabajo**, el cuerpo de ingenieros del Ejército creado en 1953, junto al Ministerio de Obras Públicas y su Dirección de Vialidad. La primera etapa, denominada Red Básica Austral, se ejecutó entre 1976 y 1982. La segunda corrió entre 1982 y 1989. Hacia fines de ese año, sumando la red de caminos transversales, el proyecto completo alcanzaba unos 2.420 kilómetros de caminos construidos, con un costo aproximado de 300 millones de dólares de la época. La conexión final hasta Villa O'Higgins se completó en los años noventa, y el ramal a la singular Caleta Tortel se abrió en 2003.
 
@@ -280,7 +284,11 @@ El arco completo de esta historia es notable: un camino concebido para integrar 
 
 ## A work against geography
 
-The scale of the engineering challenge defies easy comparison. The route crosses a geography where glaciers, glacial lakes, powerful rivers, mountains, and one of the most extensive fjord systems in the world all pile up. Much of the path had to be opened through dense forest and granite slopes, in a zone where **extreme weather conditions** damage the road every winter and demand constant maintenance. It is no accident that even today, as of mid-2025, only around 45% of the route is paved according to sector reports; the rest is gravel that resists uniformity.
+The scale of the engineering challenge defies easy comparison. The route crosses a geography where glaciers, glacial lakes, powerful rivers, mountains, and one of the most extensive fjord systems in the world all pile up. Much of the path had to be opened through dense forest and granite slopes, in a zone where **extreme weather conditions** damage the road every winter and demand constant maintenance. According to the Ministry of Public Works, along the priority corridor between Puerto Montt and Villa O'Higgins, 614.5 kilometers have been paved since 1995, **58% of the route**, while the remaining 443.5 kilometers are still gravel, especially in the far south. The road resists uniformity, and that mixed texture of asphalt and dirt is part of its character.
+
+[chart:pavimentacion-carretera-austral]
+
+To speed up what remains, in 2026 the State announced the plan **Ruta Austral: Soberanía que Conecta**, an investment of close to 800,393 million pesos for the 2026-2030 period that multiplies the historical investment pace fivefold and seeks a uniform paving standard between Puerto Montt and Cochrane.
 
 Construction mobilized more than 10,000 soldiers through the **Military Labor Corps**, the Army's engineering body created in 1953, alongside the Ministry of Public Works and its Roads Directorate. The first stage, called the Basic Austral Network, ran from 1976 to 1982. The second stretched from 1982 to 1989. By the end of that year, counting the transversal road network, the complete project reached some 2,420 kilometers of built roads, at an approximate cost of 300 million dollars at the time. The final connection to Villa O'Higgins was completed in the nineties, and the branch to the singular Caleta Tortel opened in 2003.
 
@@ -308,14 +316,14 @@ The full arc of this story is remarkable: a road conceived to integrate by land 
         ]
       },
       {
-        id:'extension-carretera-austral',
-        titleEs:'Extensión de la Carretera Austral (Ruta 7)',
-        titleEn:'Length of the Carretera Austral (Route 7)',
-        sourceEs:'Ministerio de Obras Públicas, Dirección de Vialidad',
-        sourceEn:'Ministry of Public Works, Roads Directorate',
+        id:'pavimentacion-carretera-austral',
+        titleEs:'Estado de pavimentación de la Carretera Austral',
+        titleEn:'Paving status of the Carretera Austral',
+        sourceEs:'Ministerio de Obras Públicas, 2026',
+        sourceEn:'Ministry of Public Works, 2026',
         bars:[
-          {labelEs:'Ruta 7 (Pto. Montt a Villa O\'Higgins)', labelEn:'Route 7 (Pto. Montt to Villa O\'Higgins)', value:1240, display:'1.240 km', highlight:true},
-          {labelEs:'Red total con caminos transversales (1989)', labelEn:'Total network with transversal roads (1989)', value:2420, display:'2.420 km'}
+          {labelEs:'Pavimentado', labelEn:'Paved', value:58, display:'58% · 614,5 km', highlight:true},
+          {labelEs:'Por pavimentar (ripio)', labelEn:'Unpaved (gravel)', value:42, display:'42% · 443,5 km'}
         ]
       }
     ],
