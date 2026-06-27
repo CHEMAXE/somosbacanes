@@ -19,13 +19,7 @@
 <meta name="twitter:image" content="https://somosbacanes.cl/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="canonical" href="https://somosbacanes.cl">
-<meta name="robots" content="index,follow">
-<meta property="og:locale" content="es_CL">
-<meta property="og:site_name" content="Somos Bacanes">
-<meta name="twitter:title" content="Somos Bacanes: porque Chile es bacán">
-<meta name="twitter:description" content="Porque Chile es bacán y tenemos los datos para demostrarlo. Explora el mapa y súmate al movimiento.">
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{--crema:#FAF9F7;--tinta:#2A1A36;--rosa:#E0257A;--oro:#FFC220;--magenta:#E0257A;--azul:#6B2C8F;--turquesa:#FFC220;--naranja:#FF6B35;--morado:#6B2C8F;--sol:#FFC220}
   *{margin:0;padding:0;box-sizing:border-box}
@@ -63,11 +57,33 @@
   nav a.nav-link{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;color:#fff;text-decoration:none;font-size:14px;opacity:.85;padding:8px 4px;transition:opacity .2s}
   nav a.nav-link:hover{opacity:1}
 
-  .hero{min-height:90vh;display:flex;flex-direction:column;justify-content:center;padding:110px 24px 50px;background:radial-gradient(120% 90% at 12% 8%,var(--sol) 0%,transparent 42%),linear-gradient(150deg,var(--naranja) 0%,var(--magenta) 52%,var(--morado) 100%);color:#fff;text-align:center;position:relative}
-  .hero .wrap{max-width:920px;margin:0 auto}
-  .hero .eyebrow{font-family:'Space Mono',monospace;font-weight:700;text-transform:uppercase;letter-spacing:.18em;font-size:12px;color:var(--oro);margin-bottom:22px}
-  .hero h1{font-size:clamp(2.8rem,10vw,7rem);text-transform:uppercase;color:#fff}
-  .hero .sub{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(1.1rem,2.8vw,1.55rem);max-width:600px;margin:26px auto 0;line-height:1.4;min-height:2.8em}
+  .hero{min-height:94vh;display:flex;flex-direction:column;justify-content:center;padding:120px 24px 150px;color:#fff;text-align:center;position:relative;overflow:hidden;background:#2A1A36}
+  .hero-photo{position:absolute;inset:0;z-index:0;
+    background:url("https://images.unsplash.com/photo-1528759081949-f736c5d4aa8b?q=80&w=1600&auto=format&fit=crop") center 38%/cover no-repeat;
+    animation:heroZoom 22s ease-out forwards}
+  @keyframes heroZoom{from{transform:scale(1.08)}to{transform:scale(1)}}
+  .hero-veil{position:absolute;inset:0;z-index:1;background:linear-gradient(180deg,
+    rgba(26,18,48,.62) 0%,rgba(26,18,48,.12) 18%,rgba(26,18,48,0) 38%,
+    rgba(107,44,143,.42) 74%,rgba(224,37,122,.7) 92%,var(--crema) 100%)}
+  .hero .wrap{max-width:980px;margin:0 auto;position:relative;z-index:2}
+  .hero .eyebrow{font-family:'Space Mono',monospace;font-weight:700;text-transform:uppercase;letter-spacing:.2em;font-size:clamp(10px,1.6vw,13px);color:var(--oro);margin-bottom:24px;text-shadow:0 2px 10px rgba(0,0,0,.5)}
+  .hero h1{font-size:clamp(3rem,11vw,7.4rem);text-transform:uppercase;color:#fff;line-height:.9;letter-spacing:-.02em;text-shadow:0 6px 30px rgba(0,0,0,.45)}
+  .hero .sub{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:clamp(1.05rem,2.7vw,1.55rem);max-width:620px;margin:26px auto 0;line-height:1.4;min-height:2.8em;text-shadow:0 2px 12px rgba(0,0,0,.5)}
+  .hero .sub-rota{color:var(--oro);font-weight:800}
+  .hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:34px}
+  .hero-cta .btn-primary{font-weight:800;font-size:15px;color:#2A1A36;background:var(--oro);text-decoration:none;border-radius:100px;padding:15px 30px;box-shadow:0 10px 28px rgba(0,0,0,.28);transition:transform .2s,box-shadow .2s}
+  .hero-cta .btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 36px rgba(0,0,0,.34)}
+  .hero-cta .btn-ghost{font-weight:800;font-size:15px;color:#fff;text-decoration:none;border:2px solid rgba(255,255,255,.6);border-radius:100px;padding:13px 28px;backdrop-filter:blur(4px);transition:background .2s,border-color .2s}
+  .hero-cta .btn-ghost:hover{background:rgba(255,255,255,.14);border-color:#fff}
+  .hero .stat-strip{position:absolute;left:50%;bottom:46px;transform:translateX(-50%);z-index:2;display:flex;gap:10px;flex-wrap:wrap;justify-content:center;width:min(880px,92vw)}
+  .hero .stat-strip div{flex:1;min-width:160px;background:rgba(26,18,48,.55);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.14);border-radius:16px;padding:16px 18px;text-align:left;font-family:'Bricolage Grotesque',sans-serif}
+  .hero .stat-strip b{font-family:'Archivo Black',sans-serif;font-size:clamp(1.7rem,4vw,2.4rem);color:var(--oro);display:block;line-height:1}
+  .hero .stat-strip small{font-weight:600;font-size:13px;color:rgba(255,255,255,.9);margin-top:2px;display:block}
+  @media(max-width:640px){
+    .hero{padding-bottom:240px}
+    .hero .stat-strip{flex-direction:column;width:min(360px,92vw)}
+  }
+  @media(prefers-reduced-motion:reduce){.hero-photo{animation:none;transform:none}}
   .sub-rota{color:var(--oro);font-weight:800;display:inline-block;transition:opacity .4s,transform .4s}
   .sub-rota.swap{opacity:0;transform:translateY(8px)}
   .hero .stat-strip{display:flex;gap:28px;justify-content:center;flex-wrap:wrap;margin-top:40px}
@@ -209,16 +225,22 @@
   </div>
 </nav>
 
-<section class="hero">
+<section class="hero" id="hero">
+  <div class="hero-photo" aria-hidden="true"></div>
+  <div class="hero-veil" aria-hidden="true"></div>
   <div class="wrap">
     <div class="eyebrow" data-es="Datos reales · fuentes reales · orgullo real" data-en="Real data · real sources · real pride">Datos reales · fuentes reales · orgullo real</div>
-    <h1 class="display">Somos Bacanes<svg class="hero-sol" viewBox="0 0 120 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><clipPath id="heroSolClip"><circle cx="60" cy="50" r="46"/></clipPath></defs><circle cx="60" cy="50" r="46" fill="#fff"/><g clip-path="url(#heroSolClip)"><path d="M0 102 L26 70 L42 88 L60 58 L80 86 L98 68 L120 102 Z" fill="#2A1840"/></g></svg></h1>
+    <h1 class="display">Somos Bacanes</h1>
     <p class="sub" id="heroSub"><span class="sub-fixed" data-es="Desde Arica a Magallanes, " data-en="From Arica to Magallanes, ">Desde Arica a Magallanes, </span><span class="sub-rota" id="subRota"></span></p>
-    <div class="stat-strip">
-      <div><b>#1</b><small data-es="del mundo en cobre" data-en="in the world for copper">del mundo en cobre</small></div>
-      <div><b>40%</b><small data-es="del litio del planeta" data-en="of the planet's lithium">del litio del planeta</small></div>
-      <div><b>#1</b><small data-es="cielo más limpio para ver estrellas" data-en="clearest skies for stargazing">cielo más limpio para ver estrellas</small></div>
+    <div class="hero-cta">
+      <a href="#mapa" class="btn-primary" data-es="Explora el mapa →" data-en="Explore the map →">Explora el mapa →</a>
+      <a href="#sumate" class="btn-ghost" data-es="Súmate al movimiento" data-en="Join the movement">Súmate al movimiento</a>
     </div>
+  </div>
+  <div class="stat-strip">
+    <div><b>#1</b><small data-es="del mundo en producción de cobre" data-en="in the world for copper production">del mundo en producción de cobre</small></div>
+    <div><b>40%</b><small data-es="del litio del planeta" data-en="of the planet's lithium">del litio del planeta</small></div>
+    <div><b>#1</b><small data-es="cielos más limpios para ver estrellas" data-en="clearest skies for stargazing">cielos más limpios para ver estrellas</small></div>
   </div>
 </section>
 
