@@ -254,9 +254,7 @@
   .more-btn:hover{transform:scale(1.05);background:var(--magenta)}
   .more-btn.hidden{display:none}
 
-  .stats-bar{background:var(--tinta);color:#fff;display:flex;justify-content:center;gap:clamp(28px,8vw,90px);flex-wrap:wrap;padding:48px 24px;text-align:center}
-  .stats-bar .stat b{font-family:'Archivo Black',sans-serif;font-size:clamp(2.2rem,6vw,3.4rem);color:var(--oro);display:block;line-height:1}
-  .stats-bar .stat small{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:14px;opacity:.85;margin-top:6px;display:block}
+
   .sumate{padding:clamp(70px,10vw,110px) 24px;text-align:center;color:#fff;margin-top:0;position:relative;overflow:hidden;background:radial-gradient(100% 80% at 80% 20%,var(--oro) 0%,transparent 50%),radial-gradient(110% 90% at 10% 90%,var(--turquesa) 0%,transparent 45%),linear-gradient(150deg,var(--rosa),var(--magenta))}
   .sumate .wrap{max-width:640px;margin:0 auto;position:relative;z-index:1}
   .sumate .eyebrow{font-family:'Space Mono',monospace;font-weight:700;text-transform:uppercase;letter-spacing:.22em;font-size:12px;color:var(--tinta);opacity:.65;margin-bottom:16px}
@@ -279,7 +277,7 @@
 
   /* correo: secundario */
   .sumate .mail-note{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:15px;margin:18px auto 0;max-width:420px;color:rgba(42,26,54,.8)}
-  .form-row{display:flex;gap:10px;max-width:460px;margin:16px auto 0;flex-wrap:wrap;justify-content:center}
+  .form-row{display:flex;gap:10px;max-width:480px;margin:32px auto 0;flex-wrap:wrap;justify-content:center}
   .form-row input{flex:1;min-width:210px;border:none;border-radius:100px;padding:16px 22px;font-size:16px;font-family:'Inter',sans-serif;outline:3px solid transparent;transition:outline .2s;background:rgba(255,255,255,.92)}
   .form-row input:focus{outline:3px solid var(--tinta)}
   .form-row button{border:none;border-radius:100px;cursor:pointer;background:var(--tinta);color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:16px;padding:16px 28px;transition:transform .2s,background .2s,color .2s}
@@ -391,12 +389,6 @@
   </div>
 </section>
 
-<section class="stats-bar" id="statsBar">
-  <div class="stat"><b id="stat-total">80</b><small data-es="genialidades mapeadas" data-en="greatness mapped">genialidades mapeadas</small></div>
-  <div class="stat"><b>16</b><small data-es="regiones de Arica a Magallanes" data-en="regions from Arica to Magallanes">regiones de Arica a Magallanes</small></div>
-  <div class="stat"><b>100%</b><small data-es="con fuente verificada" data-en="with verified sources">con fuente verificada</small></div>
-</section>
-
 <section class="manifiesto" id="manifiesto">
   <div class="wrap">
     <div class="kicker" data-es="El movimiento" data-en="The movement">El movimiento</div>
@@ -422,18 +414,9 @@
 <section class="sumate" id="sumate">
   <div class="wrap">
     <div class="eyebrow" data-es="Esto recién empieza" data-en="This is just the start">Esto recién empieza</div>
-    <h2 data-es="Ahora córrele la voz." data-en="Now spread the word.">Ahora córrele la voz.</h2>
-    <p class="lead" data-es="Mientras más seamos diciéndolo, más fuerte suena. Comparte el movimiento con quien quieras." data-en="The more of us saying it, the louder it gets. Share the movement with whoever you want.">Mientras más seamos diciéndolo, más fuerte suena. Comparte el movimiento con quien quieras.</p>
+    <h2 data-es="Quédate cerca del mapa." data-en="Stay close to the map.">Quédate cerca del mapa.</h2>
+    <p class="lead" data-es="Cada semana sumamos genialidades nuevas. Te escribimos solo cuando el mapa crece, nada más. Cero spam, puro orgullo." data-en="Every week we add new greatness. We'll only write when the map grows, nothing else. Zero spam, pure pride.">Cada semana sumamos genialidades nuevas. Te escribimos solo cuando el mapa crece, nada más. Cero spam, puro orgullo.</p>
 
-    <div class="share-big">
-      <button class="wa" id="suWa">WhatsApp</button>
-      <button class="x" id="suX">X / Twitter</button>
-      <button class="copy" id="suCopy" data-es="Copiar enlace" data-en="Copy link">Copiar enlace</button>
-    </div>
-
-    <div class="divider"><span data-es="¿quieres quedarte cerca?" data-en="want to stay in the loop?">¿quieres quedarte cerca?</span></div>
-
-    <p class="mail-note" data-es="Te escribimos solo cuando el mapa crece. Nada más." data-en="We'll only write when the map grows. Nothing else.">Te escribimos solo cuando el mapa crece. Nada más.</p>
     <div class="form-row">
       <input type="email" id="suEmail" placeholder="tucorreo@ejemplo.cl" data-es-ph="tucorreo@ejemplo.cl" data-en-ph="you@example.com" aria-label="Correo electrónico" autocomplete="email">
       <button id="suSubmit" data-es="Avísenme" data-en="Notify me">Avísenme</button>
@@ -682,7 +665,6 @@ buildMap();renderDeck();
   menu.querySelectorAll('a, .lang button').forEach(el=>el.addEventListener('click',closeMenu));
 })();
 // stats dinámicos: el total se calcula solo desde la base de datos
-(function(){var el=document.getElementById('stat-total');if(el)el.textContent=DATA.length;})();
 
 // ===== Hero dinámico: frases que van rotando =====
 const FRASES={
@@ -759,20 +741,7 @@ setInterval(rotarFrase,3400);
 
 /* ===== SÚMATE: compartir + correo ===== */
 (function sumate(){
-  const url='https://somosbacanes.cl';
-  const qEs='Chile es bacán, y tenemos los datos para probarlo. Súmate al movimiento:';
-  const qEn='Chile is bacán, and we\u2019ve got the data to prove it. Join the movement:';
   const isEn=()=>{try{if(typeof LANG!=='undefined')return LANG==='en';}catch(e){}return (document.documentElement.lang||'').toLowerCase().startsWith('en');};
-  const txt=()=>isEn()?qEn:qEs;
-
-  const wa=document.getElementById('suWa'),x=document.getElementById('suX'),cp=document.getElementById('suCopy');
-  if(wa)wa.addEventListener('click',()=>window.open('https://wa.me/?text='+encodeURIComponent(txt()+' '+url),'_blank','noopener'));
-  if(x)x.addEventListener('click',()=>window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(txt())+'&url='+encodeURIComponent(url)+'&hashtags=SomosBacanes','_blank','noopener'));
-  if(cp)cp.addEventListener('click',async()=>{
-    try{await navigator.clipboard.writeText(url);}
-    catch(e){const t=document.createElement('textarea');t.value=url;document.body.appendChild(t);t.select();try{document.execCommand('copy');}catch(_){}document.body.removeChild(t);}
-    const o=cp.textContent;cp.textContent=isEn()?'Copied ✓':'¡Copiado ✓';setTimeout(()=>cp.textContent=o,1700);
-  });
 
   /* placeholder bilingüe */
   const email=document.getElementById('suEmail');
