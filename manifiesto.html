@@ -27,21 +27,29 @@
   a{color:inherit}
 
   /* ===== NAV ===== */
-  nav{position:sticky;top:0;z-index:90;display:flex;justify-content:space-between;align-items:center;gap:16px;
-    padding:13px clamp(16px,4vw,40px);background:rgba(26,18,48,.82);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
-  .logo{display:flex;align-items:center;gap:9px;font-family:'Archivo Black',sans-serif;font-size:17px;letter-spacing:-.02em;color:#fff;text-decoration:none}
-  .logo span{color:var(--oro)}
+  nav{
+    position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:90;
+    display:flex;justify-content:space-between;align-items:center;gap:22px;
+    padding:8px 8px 8px 20px;width:auto;max-width:calc(100vw - 28px);
+    background:rgba(26,18,48,.55);
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    border:1px solid rgba(255,255,255,.18);border-radius:100px;
+    box-shadow:0 16px 44px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.08);
+    transition:padding .25s,background .25s,box-shadow .25s}
+  .logo{font-family:'Archivo Black',sans-serif;color:var(--crema);font-size:17px;letter-spacing:-.02em;display:flex;align-items:center;gap:8px;white-space:nowrap;text-decoration:none}
+  .logo span{color:var(--crema)}
   .logo-sol{width:30px;height:28px;flex-shrink:0}
   nav .right{display:flex;align-items:center;gap:14px}
   .nav-link{font-weight:800;color:rgba(255,255,255,.85);text-decoration:none;font-size:14px}
   .nav-link:hover{color:#fff}
+  .nav-link.current{color:var(--oro)}
   .lang{display:flex;border:2px solid rgba(255,255,255,.32);border-radius:100px;overflow:hidden;font-weight:800;font-size:12px}
   .lang button{background:none;border:none;color:rgba(255,255,255,.7);padding:5px 12px;cursor:pointer;font-weight:800;font-size:12px}
   .lang button.active{background:var(--oro);color:var(--tinta)}
   .nav-cta{font-weight:800;color:var(--tinta);background:var(--oro);text-decoration:none;font-size:14px;border-radius:100px;padding:9px 20px}
 
   /* ===== ARTÍCULO ===== */
-  .manif{position:relative;overflow:hidden;padding:clamp(60px,9vw,110px) 24px clamp(50px,7vw,80px)}
+  .manif{position:relative;overflow:hidden;padding:clamp(90px,12vw,140px) 24px clamp(50px,7vw,80px)}
   .manif::before{content:'';position:absolute;z-index:0;top:-20%;right:-12%;width:60vw;max-width:620px;height:60vw;max-height:620px;border-radius:50%;background:radial-gradient(circle,rgba(224,37,122,.38),transparent 62%);filter:blur(10px)}
   .manif::after{content:'';position:absolute;z-index:0;bottom:-25%;left:-14%;width:55vw;max-width:540px;height:55vw;max-height:540px;border-radius:50%;background:radial-gradient(circle,rgba(107,44,143,.4),transparent 60%);filter:blur(10px)}
   .manif .wrap{position:relative;z-index:1;max-width:760px;margin:0 auto}
@@ -75,6 +83,9 @@
   .foot-sol{width:22px;height:20px}
   footer b{color:rgba(255,255,255,.8)}
 
+  @media(max-width:720px){
+    nav{gap:10px;padding:7px 7px 7px 16px;left:14px;right:14px;transform:none;max-width:none;justify-content:space-between}
+  }
   @media(max-width:560px){
     .manif p.tesis{font-size:1.28rem}
     .share button{flex:1;min-width:130px;justify-content:center}
@@ -85,11 +96,13 @@
 <body>
 
 <nav>
-  <a href="index.html" class="logo"><svg class="logo-sol" viewBox="0 0 120 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="navSol" x1="0" y1="0" x2="0.85" y2="1"><stop offset="0" stop-color="#FFC222"/><stop offset=".32" stop-color="#F5852E"/><stop offset=".6" stop-color="#D81E79"/><stop offset="1" stop-color="#5E2A86"/></linearGradient><clipPath id="navSolClip"><circle cx="60" cy="50" r="46"/></clipPath></defs><circle cx="60" cy="50" r="46" fill="url(#navSol)"/><g clip-path="url(#navSolClip)"><path d="M0 102 L26 70 L42 88 L60 58 L80 86 L98 68 L120 102 Z" fill="#fff"/></g></svg>SOMOS<span>BACANES</span></a>
+  <a href="/" class="logo"><svg class="logo-sol" viewBox="0 0 120 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="navSol" x1="0" y1="0" x2="0.85" y2="1"><stop offset="0" stop-color="#FFC222"/><stop offset=".32" stop-color="#F5852E"/><stop offset=".6" stop-color="#D81E79"/><stop offset="1" stop-color="#5E2A86"/></linearGradient><clipPath id="navSolClip"><circle cx="60" cy="50" r="46"/></clipPath></defs><circle cx="60" cy="50" r="46" fill="url(#navSol)"/><g clip-path="url(#navSolClip)"><path d="M0 102 L26 70 L42 88 L60 58 L80 86 L98 68 L120 102 Z" fill="#fff"/></g></svg>SOMOS<span>BACANES</span></a>
   <div class="right">
-    <a href="index.html#mapa" class="nav-link" data-es="El Mapa" data-en="The Map">El Mapa</a>
+    <a href="/" class="nav-link" data-es="Inicio" data-en="Home">Inicio</a>
+    <a href="/manifiesto" class="nav-link current" aria-current="page" data-es="Manifiesto" data-en="Manifesto">Manifiesto</a>
+    <a href="/blog" class="nav-link" data-es="Blog" data-en="Blog">Blog</a>
     <div class="lang"><button data-lang="es" class="active">ES</button><button data-lang="en">EN</button></div>
-    <a href="index.html#sumate" class="nav-cta" data-es="Súmate" data-en="Join">Súmate</a>
+    <a href="/#sumate" class="nav-cta" data-es="Súmate" data-en="Join">Súmate</a>
   </div>
 </nav>
 

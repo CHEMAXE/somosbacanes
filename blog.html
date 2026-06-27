@@ -17,15 +17,9 @@
 <meta property="og:url" content="https://somosbacanes.cl/blog">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://somosbacanes.cl/og-image.png">
-<meta name="twitter:title" content="Blog Bacán · Somos Bacanes">
-<meta name="twitter:description" content="Todo lo bacán de Chile, contado. Con datos, con fuentes, con orgullo.">
-<link rel="canonical" href="https://somosbacanes.cl/blog">
-<meta name="robots" content="index,follow">
-<meta property="og:locale" content="es_CL">
-<meta property="og:site_name" content="Somos Bacanes">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root{--crema:#FAF9F7;--tinta:#2A1A36;--rosa:#E0257A;--oro:#FFC220;--magenta:#E0257A;--azul:#6B2C8F;--turquesa:#FFC220;--naranja:#FF6B35;--morado:#6B2C8F;--sol:#FFC220}
   *{margin:0;padding:0;box-sizing:border-box}
@@ -35,8 +29,16 @@
   .display{font-family:'Archivo Black',sans-serif;line-height:.92;letter-spacing:-.02em}
   a{color:inherit}
 
-  nav{position:fixed;top:0;left:0;right:0;z-index:90;display:flex;justify-content:space-between;align-items:center;padding:14px 24px;background:rgba(26,18,48,.92);backdrop-filter:blur(10px)}
-  nav .logo{font-family:'Archivo Black',sans-serif;color:var(--crema);font-size:18px;letter-spacing:-.02em;display:flex;align-items:center;gap:8px;text-decoration:none}
+  nav{
+    position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:90;
+    display:flex;justify-content:space-between;align-items:center;gap:22px;
+    padding:8px 8px 8px 20px;width:auto;max-width:calc(100vw - 28px);
+    background:rgba(26,18,48,.55);
+    backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+    border:1px solid rgba(255,255,255,.18);border-radius:100px;
+    box-shadow:0 16px 44px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.08);
+    transition:padding .25s,background .25s,box-shadow .25s}
+  nav .logo{font-family:'Archivo Black',sans-serif;color:var(--crema);font-size:17px;letter-spacing:-.02em;display:flex;align-items:center;gap:8px;white-space:nowrap;text-decoration:none}
   nav .logo span{color:var(--crema)}
   .logo-sol{width:30px;height:28px;flex-shrink:0}
   nav .right{display:flex;gap:10px;align-items:center}
@@ -46,6 +48,7 @@
   .nav-toggle.open span:nth-child(2){opacity:0}
   .nav-toggle.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
   @media(max-width:720px){
+    nav{gap:10px;padding:7px 7px 7px 16px;left:14px;right:14px;transform:none;max-width:none;justify-content:space-between}
     .nav-toggle{display:flex}
     nav .right{position:fixed;top:0;right:0;height:100vh;width:min(78vw,300px);flex-direction:column;align-items:stretch;justify-content:flex-start;gap:6px;padding:78px 22px 22px;background:var(--tinta);box-shadow:-8px 0 30px rgba(0,0,0,.3);transform:translateX(100%);transition:transform .32s cubic-bezier(.4,0,.2,1);z-index:95}
     nav .right.open{transform:translateX(0)}
@@ -55,6 +58,7 @@
   }
   nav a.nav-link{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;color:#fff;text-decoration:none;font-size:14px;opacity:.85;padding:8px 6px}
   nav a.nav-link:hover{opacity:1}
+  nav a.nav-link.current{opacity:1;color:var(--oro)}
   nav a.nav-cta{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;color:var(--tinta);background:var(--oro);text-decoration:none;font-size:14px;border-radius:100px;padding:8px 18px;transition:transform .2s}
   nav a.nav-cta:hover{transform:scale(1.05)}
   nav .lang{display:flex;background:rgba(255,255,255,.12);border-radius:100px;padding:2px}
@@ -182,7 +186,9 @@
   <a class="logo" href="/"><svg class="logo-sol" viewBox="0 0 120 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="navSolB" x1="0" y1="0" x2="0.85" y2="1"><stop offset="0" stop-color="#FFC222"/><stop offset=".32" stop-color="#F5852E"/><stop offset=".6" stop-color="#D81E79"/><stop offset="1" stop-color="#5E2A86"/></linearGradient><clipPath id="navSolBClip"><circle cx="60" cy="50" r="46"/></clipPath></defs><circle cx="60" cy="50" r="46" fill="url(#navSolB)"/><g clip-path="url(#navSolBClip)"><path d="M0 102 L26 70 L42 88 L60 58 L80 86 L98 68 L120 102 Z" fill="#fff"/></g></svg>SOMOS<span>BACANES</span></a>
   <button class="nav-toggle" id="navToggle" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
   <div class="right" id="navRight">
-    <a href="/" class="nav-link" data-es="El Mapa" data-en="The Map">El Mapa</a>
+    <a href="/" class="nav-link" data-es="Inicio" data-en="Home">Inicio</a>
+    <a href="/manifiesto" class="nav-link" data-es="Manifiesto" data-en="Manifesto">Manifiesto</a>
+    <a href="/blog" class="nav-link current" aria-current="page" data-es="Blog" data-en="Blog">Blog</a>
     <div class="lang"><button data-lang="es" class="active">ES</button><button data-lang="en">EN</button></div>
     <a href="/#sumate" class="nav-cta" data-es="Súmate" data-en="Join">Súmate</a>
   </div>
