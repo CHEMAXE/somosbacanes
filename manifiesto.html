@@ -47,6 +47,11 @@
   .lang button{background:none;border:none;color:rgba(255,255,255,.7);padding:5px 12px;cursor:pointer;font-weight:800;font-size:12px}
   .lang button.active{background:var(--oro);color:var(--tinta)}
   .nav-cta{font-weight:800;color:var(--tinta);background:var(--oro);text-decoration:none;font-size:14px;border-radius:100px;padding:9px 20px}
+  .nav-toggle{display:none;flex-direction:column;justify-content:center;gap:5px;width:42px;height:42px;background:none;border:none;cursor:pointer;padding:9px;border-radius:10px}
+  .nav-toggle span{display:block;height:2.5px;width:100%;background:var(--crema);border-radius:2px;transition:transform .3s,opacity .2s}
+  .nav-toggle.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+  .nav-toggle.open span:nth-child(2){opacity:0}
+  .nav-toggle.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
 
   /* ===== ARTÍCULO ===== */
   .manif{position:relative;overflow:hidden;padding:clamp(90px,12vw,140px) 24px clamp(50px,7vw,80px)}
@@ -85,6 +90,12 @@
 
   @media(max-width:720px){
     nav{gap:10px;padding:7px 7px 7px 16px;left:14px;right:14px;transform:none;max-width:none;justify-content:space-between}
+    .nav-toggle{display:flex}
+    nav .right{position:fixed;top:0;right:0;height:100vh;width:min(78vw,300px);flex-direction:column;align-items:stretch;justify-content:flex-start;gap:6px;padding:78px 22px 22px;background:var(--tinta);box-shadow:-8px 0 30px rgba(0,0,0,.3);transform:translateX(105%);visibility:hidden;transition:transform .32s cubic-bezier(.4,0,.2,1),visibility .32s;z-index:95}
+    nav .right.open{transform:translateX(0);visibility:visible}
+    nav .right .nav-link{font-size:17px;padding:13px 4px;border-bottom:1px solid rgba(255,255,255,.1)}
+    nav .right .lang{align-self:flex-start;margin:8px 0}
+    nav .right .nav-cta{text-align:center;margin-top:10px;padding:13px}
   }
   @media(max-width:560px){
     .manif p.tesis{font-size:1.28rem}
@@ -97,7 +108,8 @@
 
 <nav>
   <a href="/" class="logo"><svg class="logo-sol" viewBox="0 0 120 110" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs><linearGradient id="navSol" x1="0" y1="0" x2="0.85" y2="1"><stop offset="0" stop-color="#FFC222"/><stop offset=".32" stop-color="#F5852E"/><stop offset=".6" stop-color="#D81E79"/><stop offset="1" stop-color="#5E2A86"/></linearGradient><clipPath id="navSolClip"><circle cx="60" cy="50" r="46"/></clipPath></defs><circle cx="60" cy="50" r="46" fill="url(#navSol)"/><g clip-path="url(#navSolClip)"><path d="M0 102 L26 70 L42 88 L60 58 L80 86 L98 68 L120 102 Z" fill="#fff"/></g></svg>SOMOS<span>BACANES</span></a>
-  <div class="right">
+  <button class="nav-toggle" id="navToggle" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
+  <div class="right" id="navRight">
     <a href="/" class="nav-link" data-es="Inicio" data-en="Home">Inicio</a>
     <a href="/manifiesto" class="nav-link current" aria-current="page" data-es="Manifiesto" data-en="Manifesto">Manifiesto</a>
     <a href="/blog" class="nav-link" data-es="Blog" data-en="Blog">Blog</a>
@@ -108,7 +120,7 @@
 
 <article class="manif">
   <div class="wrap">
-    <a class="back" href="index.html" data-es="← Volver al inicio" data-en="← Back to home">← Volver al inicio</a>
+    <a class="back" href="/" data-es="← Volver al inicio" data-en="← Back to home">← Volver al inicio</a>
     <div class="kicker" data-es="El manifiesto" data-en="The manifesto">El manifiesto</div>
     <h1 data-es="No es creérsela. Es saberlo." data-en="It's not cockiness. It's knowing.">No es creérsela. Es saberlo.</h1>
 
@@ -139,7 +151,7 @@
   </div>
 
   <div class="closing">
-    <a href="index.html#mapa" data-es="Explora el mapa de razones →" data-en="Explore the map of reasons →">Explora el mapa de razones →</a>
+    <a href="/#mapa" data-es="Explora el mapa de razones →" data-en="Explore the map of reasons →">Explora el mapa de razones →</a>
   </div>
 </article>
 
@@ -175,6 +187,20 @@
       catch(e){const t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();try{document.execCommand('copy');}catch(_){}document.body.removeChild(t);}
       const o=cp.textContent;cp.textContent=isEn()?'Copied ✓':'¡Copiado ✓';setTimeout(()=>cp.textContent=o,1800);
     });
+  })();
+
+  /* ===== Menú móvil ===== */
+  (function(){
+    const toggle=document.getElementById('navToggle');
+    const menu=document.getElementById('navRight');
+    if(!toggle||!menu)return;
+    function closeMenu(){menu.classList.remove('open');toggle.classList.remove('open');toggle.setAttribute('aria-expanded','false');}
+    toggle.addEventListener('click',()=>{
+      const abierto=menu.classList.toggle('open');
+      toggle.classList.toggle('open',abierto);
+      toggle.setAttribute('aria-expanded',abierto?'true':'false');
+    });
+    menu.querySelectorAll('a, .lang button').forEach(el=>el.addEventListener('click',closeMenu));
   })();
 </script>
 </body>
