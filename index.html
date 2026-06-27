@@ -80,8 +80,13 @@
   .hero .stat-strip b{font-family:'Archivo Black',sans-serif;font-size:clamp(1.7rem,4vw,2.4rem);color:var(--oro);display:block;line-height:1}
   .hero .stat-strip small{font-weight:600;font-size:13px;color:rgba(255,255,255,.9);margin-top:2px;display:block}
   @media(max-width:640px){
-    .hero{padding-bottom:240px}
-    .hero .stat-strip{flex-direction:column;width:min(360px,92vw)}
+    .hero{padding:110px 20px 60px;min-height:auto}
+    .hero .wrap{margin-bottom:8px}
+    .hero .stat-strip{position:static;transform:none;left:auto;bottom:auto;
+      flex-direction:column;width:100%;max-width:420px;margin:30px auto 0}
+    .hero .stat-strip div{min-width:0;width:100%}
+    .hero-cta{flex-direction:column;align-items:center}
+    .hero-cta .btn-primary,.hero-cta .btn-ghost{width:100%;max-width:320px;text-align:center}
   }
   @media(prefers-reduced-motion:reduce){.hero-photo{animation:none;transform:none}}
   .sub-rota{color:var(--oro);font-weight:800;display:inline-block;transition:opacity .4s,transform .4s}
@@ -255,7 +260,7 @@
      data-en="This is a map of all that. From Arica to Magallanes, every region holds reasons to feel proud. <b>It is not bragging: it is finally saying out loud how bacanes we are.</b>">Este es un mapa de todo eso. Desde Arica a Magallanes, cada región guarda razones para sentirnos orgullosos. <b>No es presumir: es reconocer, por fin y en voz alta, lo bacanes que somos.</b></p>
 </section>
 
-<section class="mapa-sec">
+<section class="mapa-sec" id="mapa">
   <div class="mapa-box">
     <h2 class="display" data-es="El Mapa Bacán" data-en="The Bacán Map">El Mapa Bacán</h2>
     <p data-es="Pincha o toca tu región y descubre por qué es bacán." data-en="Click or tap your region and find out why it's bacán.">Pincha o toca tu región y descubre por qué es bacán.</p>
