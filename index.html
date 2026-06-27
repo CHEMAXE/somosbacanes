@@ -105,6 +105,41 @@
   .intro p:last-child{margin-bottom:0}
   .intro p b{font-weight:800;color:var(--tinta)}
 
+  /* ===== SECCIÓN MANIFIESTO ===== */
+  .manifiesto{position:relative;background:var(--tinta);color:#fff;overflow:hidden;padding:clamp(70px,11vw,130px) 24px}
+  .manifiesto::before{content:'';position:absolute;z-index:0;top:-30%;right:-10%;width:70vw;max-width:680px;height:70vw;max-height:680px;border-radius:50%;
+    background:radial-gradient(circle,rgba(224,37,122,.4),transparent 62%);filter:blur(10px)}
+  .manifiesto::after{content:'';position:absolute;z-index:0;bottom:-30%;left:-12%;width:60vw;max-width:560px;height:60vw;max-height:560px;border-radius:50%;
+    background:radial-gradient(circle,rgba(107,44,143,.42),transparent 60%);filter:blur(10px)}
+  .manifiesto .wrap{position:relative;z-index:1;max-width:780px;margin:0 auto}
+  .manifiesto .kicker{font-family:'Space Mono',monospace;font-weight:700;text-transform:uppercase;letter-spacing:.22em;font-size:12px;color:var(--oro);margin-bottom:20px}
+  .manifiesto h2{font-family:'Archivo Black',sans-serif;font-size:clamp(2.2rem,6.5vw,4rem);line-height:.98;letter-spacing:-.01em;margin:0 0 36px;text-transform:none}
+  .manifiesto p{font-family:'Bricolage Grotesque',sans-serif;font-weight:400;font-size:clamp(1.08rem,2.4vw,1.32rem);line-height:1.6;margin:0 0 22px;color:rgba(255,255,255,.86)}
+  .manifiesto p .lede{font-weight:700;color:#fff}
+  /* la tesis suelta, en su propia línea, más grande */
+  .manifiesto p.tesis{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(1.3rem,3.2vw,1.9rem);line-height:1.3;color:#fff;margin:34px 0;padding-left:20px;border-left:3px solid var(--oro)}
+  .manifiesto p em{font-style:normal;color:var(--oro);font-weight:700}
+
+  /* frase-bandera destacada con botones de compartir */
+  .bandera{position:relative;z-index:1;max-width:820px;margin:clamp(44px,7vw,68px) auto 0;text-align:center;
+    border-top:1px solid rgba(255,255,255,.16);padding-top:clamp(40px,6vw,60px)}
+  .bandera blockquote{margin:0;font-family:'Archivo Black',sans-serif;
+    font-size:clamp(1.7rem,5.2vw,3.1rem);line-height:1.04;letter-spacing:-.01em;color:#fff}
+  .bandera blockquote .gold{color:var(--oro)}
+  .bandera .share{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+  .bandera .share .lbl{width:100%;font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:13px;color:rgba(255,255,255,.6);margin-bottom:4px;letter-spacing:.02em}
+  .bandera .share button{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:14px;cursor:pointer;
+    border:none;border-radius:100px;padding:12px 22px;display:inline-flex;align-items:center;gap:8px;transition:transform .18s,filter .18s}
+  .bandera .share button:hover{transform:translateY(-2px);filter:brightness(1.06)}
+  .bandera .share button:focus-visible{outline:3px solid var(--oro);outline-offset:2px}
+  .bandera .share .wa{background:#25D366;color:#06351a}
+  .bandera .share .x{background:#fff;color:#111}
+  .bandera .share .copy{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.3)}
+  @media(max-width:560px){
+    .manifiesto p.tesis{font-size:1.25rem}
+    .bandera .share button{flex:1;min-width:130px;justify-content:center}
+  }
+
   /* ===== SECCIÓN MAPA ===== */
   .mapa-sec{max-width:1180px;margin:0 auto;padding:70px 24px 30px;display:grid;grid-template-columns:minmax(260px,360px) 1fr;gap:40px;align-items:start}
   @media(min-width:1101px){
@@ -249,15 +284,36 @@
   </div>
 </section>
 
-<section class="intro">
-  <div class="kicker" data-es="El movimiento" data-en="The movement">El movimiento</div>
-  <h2 data-es="¿Qué es ser bacán?" data-en="What does it mean to be bacán?">¿Qué es ser <span class="hl">bacán</span>?</h2>
-  <p data-es='"Bacán" es una de esas palabras que solo los chilenos entendemos del todo. Significa genial, increíble, de lo mejor, pero es mucho más que eso.'
-     data-en='"Bacán" is one of those words only Chileans fully understand. It means awesome, amazing, the best, but it is much more than that.'>"Bacán" es una de esas palabras que solo los chilenos entendemos del todo. Significa genial, increíble, de lo mejor, pero es mucho más que eso.</p>
-  <p data-es="Ser bacán es resolver con ingenio, levantarse después de cada caída, mirar las estrellas más limpias del mundo y construir los telescopios para compartirlas. Es la chispeza, la garra y el cariño hechos identidad."
-     data-en="Being bacán is solving things with ingenuity, getting back up after every fall, gazing at the clearest stars on Earth and building the telescopes to share them. It is wit, grit and warmth turned into identity.">Ser bacán es resolver con ingenio, levantarse después de cada caída, mirar las estrellas más limpias del mundo y construir los telescopios para compartirlas. Es la chispeza, la garra y el cariño hechos identidad.</p>
-  <p data-es="Este es un mapa de todo eso. Desde Arica a Magallanes, cada región guarda razones para sentirnos orgullosos. <b>No es presumir: es reconocer, por fin y en voz alta, lo bacanes que somos.</b>"
-     data-en="This is a map of all that. From Arica to Magallanes, every region holds reasons to feel proud. <b>It is not bragging: it is finally saying out loud how bacanes we are.</b>">Este es un mapa de todo eso. Desde Arica a Magallanes, cada región guarda razones para sentirnos orgullosos. <b>No es presumir: es reconocer, por fin y en voz alta, lo bacanes que somos.</b></p>
+<section class="manifiesto" id="manifiesto">
+  <div class="wrap">
+    <div class="kicker" data-es="El manifiesto" data-en="The manifesto">El manifiesto</div>
+    <h2 data-es="No es creérsela. Es saberlo." data-en="It's not cockiness. It's knowing.">No es creérsela. Es saberlo.</h2>
+
+    <p data-es="Tenemos una maña rara: somos campeones mundiales en restarnos méritos. Nos sale natural el “sí, pero…”, el “no es para tanto”, el bajar la vista cuando alguien nos felicita. Lo hacemos casi con ternura, como quien no quiere incomodar. Pero de tanto repetirlo, se nos olvidó algo."
+       data-en="We have a strange habit: we're world champions at downplaying ourselves. The “yeah, but…”, the “it's no big deal”, the looking away when someone praises us. We do it almost tenderly, like someone who doesn't want to impose. But from repeating it so much, we forgot something.">Tenemos una maña rara: somos campeones mundiales en restarnos méritos. Nos sale natural el “sí, pero…”, el “no es para tanto”, el bajar la vista cuando alguien nos felicita. Lo hacemos casi con ternura, como quien no quiere incomodar. Pero de tanto repetirlo, se nos olvidó algo.</p>
+
+    <p data-es="Que mientras nos disculpábamos, acá se levantó el cielo más limpio del planeta para mirar las estrellas. Se sacó del desierto el cobre que mueve al mundo. Se resolvió con ingenio donde no había con qué. Y cada vez que la tierra o la historia botaron lo construido, alguien estaba parando la casa de nuevo al día siguiente."
+       data-en="That while we apologized, here rose the clearest skies on the planet to watch the stars. From the desert came the copper that moves the world. Problems got solved with sheer wit where there was nothing to work with. And every time the earth or history knocked down what we'd built, someone was putting the house back up the very next day.">Que mientras nos disculpábamos, acá se levantó el cielo más limpio del planeta para mirar las estrellas. Se sacó del desierto el cobre que mueve al mundo. Se resolvió con ingenio donde no había con qué. Y cada vez que la tierra o la historia botaron lo construido, alguien estaba parando la casa de nuevo al día siguiente.</p>
+
+    <p class="tesis" data-es="Somos Bacanes es eso: dejar de pedir permiso para reconocer lo que ya es verdad."
+       data-en="Somos Bacanes is just that: to stop asking permission to recognize what's already true.">Somos Bacanes es eso: dejar de pedir permiso para reconocer lo que ya es verdad.</p>
+
+    <p data-es="No con datos inflados ni épica de exportación. Con cifras reales, fuentes que cualquiera puede revisar, y una convicción simple: que estar orgulloso de lo nuestro no es soberbia. <em>Es justicia.</em>"
+       data-en="Not with inflated figures or export-grade epic. With real numbers, sources anyone can check, and one simple conviction: that being proud of what's ours isn't arrogance. <em>It's justice.</em>">No con datos inflados ni épica de exportación. Con cifras reales, fuentes que cualquiera puede revisar, y una convicción simple: que estar orgulloso de lo nuestro no es soberbia. <em>Es justicia.</em></p>
+
+    <p data-es="Esto es un mapa de razones. Una por región, desde Arica a Magallanes. Y una invitación igual de simple: léelas, reconócete en ellas, y pásalas. Porque lo bacán, cuando se comparte, deja de ser un dato y se vuelve un movimiento."
+       data-en="This is a map of reasons. One per region, from Arica to Magallanes. And an equally simple invitation: read them, see yourself in them, and pass them on. Because what's bacán, once shared, stops being data and becomes a movement.">Esto es un mapa de razones. Una por región, desde Arica a Magallanes. Y una invitación igual de simple: léelas, reconócete en ellas, y pásalas. Porque lo bacán, cuando se comparte, deja de ser un dato y se vuelve un movimiento.</p>
+  </div>
+
+  <div class="bandera">
+    <blockquote data-es="Siempre fuimos bacanes. Solo nos faltaba decirlo." data-en="We were always bacanes. We just hadn't said it out loud.">Siempre fuimos <span class="gold">bacanes</span>. Solo nos faltaba decirlo.</blockquote>
+    <div class="share">
+      <span class="lbl" data-es="Pásalo. Que se sepa." data-en="Pass it on. Let it be known.">Pásalo. Que se sepa.</span>
+      <button class="wa" id="shWa" data-es="WhatsApp" data-en="WhatsApp">WhatsApp</button>
+      <button class="x" id="shX">X / Twitter</button>
+      <button class="copy" id="shCopy" data-es="Copiar frase" data-en="Copy quote">Copiar frase</button>
+    </div>
+  </div>
 </section>
 
 <section class="mapa-sec" id="mapa">
@@ -589,6 +645,39 @@ function rotarFrase(){
 }
 pintarFrase();
 setInterval(rotarFrase,3400);
+
+/* ===== Compartir la frase-bandera del manifiesto ===== */
+(function shareBandera(){
+  const url='https://somosbacanes.cl';
+  const quoteEs='“Siempre fuimos bacanes. Solo nos faltaba decirlo.” — Somos Bacanes';
+  const quoteEn='“We were always bacanes. We just hadn\u2019t said it out loud.” — Somos Bacanes';
+  const isEn=()=>{
+    try{ if(typeof LANG!=='undefined') return LANG==='en'; }catch(e){}
+    return (document.documentElement.lang||'').toLowerCase().startsWith('en');
+  };
+  const quote=()=>isEn()?quoteEn:quoteEs;
+  const wa=document.getElementById('shWa');
+  const x=document.getElementById('shX');
+  const cp=document.getElementById('shCopy');
+  if(wa)wa.addEventListener('click',()=>{
+    window.open('https://wa.me/?text='+encodeURIComponent(quote()+' '+url),'_blank','noopener');
+  });
+  if(x)x.addEventListener('click',()=>{
+    window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(quote())+'&url='+encodeURIComponent(url)+'&hashtags=SomosBacanes','_blank','noopener');
+  });
+  if(cp)cp.addEventListener('click',async()=>{
+    const txt=quote()+' '+url;
+    try{
+      await navigator.clipboard.writeText(txt);
+    }catch(e){
+      const t=document.createElement('textarea');t.value=txt;document.body.appendChild(t);t.select();
+      try{document.execCommand('copy');}catch(_){}document.body.removeChild(t);
+    }
+    const orig=cp.textContent;
+    cp.textContent=isEn()?'Copied ✓':'¡Copiado ✓';
+    setTimeout(()=>{cp.textContent=orig;},1800);
+  });
+})();
 </script>
 </body>
 </html>
